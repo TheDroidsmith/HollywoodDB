@@ -2,35 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/bottom_action_home"
         android:enabled="true"
         android:icon="@drawable/ic_home_black_24dp"
         android:iconTint="@color/white"
         android:title="@string/bot_nav_home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_movies"
+        android:id="@+id/bottom_action_movies"
         android:enabled="true"
         android:icon="@drawable/ic_local_movies_black_24dp"
         android:iconTint="@color/white"
         android:title="@string/bot_nav_movies"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_tv"
+        android:id="@+id/bottom_action_tv"
         android:enabled="true"
         android:icon="@drawable/ic_television_classic"
         android:iconTint="@color/white"
         android:title="@string/bot_nav_tv"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_favorites"
+        android:id="@+id/bottom_action_favorites"
         android:enabled="true"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:iconTint="@color/white"
         android:title="@string/bot_nav_favorites"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_history"
+        android:id="@+id/bottom_action_history"
         android:enabled="true"
     android:icon="@drawable/ic_history_black_24dp"
         android:iconTint="@color/white"

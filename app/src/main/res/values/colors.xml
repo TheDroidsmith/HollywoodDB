@@ -2,7 +2,23 @@
 <resources>
     <color name="colorPrimary">#FF9800</color>
     <color name="colorPrimaryDark">#EF6C00</color>
-    <color name="colorAccent">#448AFF</color>
+    <color name="colorAccent">#40C4FF</color>
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
+
+    <!--Card Colors-->
+    <color name="card_bg_color_home_blue">#4FC3F7</color>
+    <color name="card_bg_color_home_orange">#FFB74D</color>
+
+    <color name="card_bg_color_movies_blue_0">#81D4FA</color>
+    <color name="card_bg_color_movies_blue_1">#29B6F6</color>
+    <color name="card_bg_color_movies_blue_2">#039BE5</color>
+    <color name="card_bg_color_movies_blue_3">#0277BD</color>
+
+
+    <color name="card_bg_color_tv_orange_0">#FFE082</color>
+    <color name="card_bg_color_tv_orange_1">#FFCA28</color>
+    <color name="card_bg_color_tv_orange_2">#FFB300</color>
+    <color name="card_bg_color_tv_orange_3">#FF8F00</color>
+
 </resources>
