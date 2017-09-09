@@ -18,7 +18,4 @@ public interface TMDBInterface {
     @GET("movie/popular")
     Call<PopularMovies> doGetPopularMovies(@Query("api_key") String apiKey);
 
-
-
-
 }

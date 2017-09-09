@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setupBottomNavigationView();
         setupViewPager();
 
-
+        presenter.checkNetworkCall();
 
 
     }

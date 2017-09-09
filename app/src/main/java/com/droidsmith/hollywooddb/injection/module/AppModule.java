@@ -10,11 +10,9 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-//The AppModule needs the sub-components of everything that needs the application context.
+//Make sure other activities are sub-components here
 @Module(subcomponents = {MainActivityComponent.class})
 public class AppModule {
-
-    //I think we also provide retrofit, okhttp, sharedPref, etc. here too
 
     @Provides
     @Singleton
