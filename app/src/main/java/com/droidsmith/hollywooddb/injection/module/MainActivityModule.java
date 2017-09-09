@@ -2,6 +2,7 @@ package com.droidsmith.hollywooddb.injection.module;
 
 
 import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
+import com.droidsmith.hollywooddb.injection.component.HomeFragmentComponent;
 import com.droidsmith.hollywooddb.ui.home.MainPresenter;
 import com.droidsmith.hollywooddb.ui.home.MainPresenterImp;
 import com.droidsmith.hollywooddb.ui.home.MainActivity;
@@ -16,7 +17,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@Module
+@Module(subcomponents = HomeFragmentComponent.class)
 public class MainActivityModule {
 
     @Provides
@@ -25,8 +26,8 @@ public class MainActivityModule {
     }
 
     @Provides
-    MainPresenter provideMainPresenter(MainView mainView, TMDBInterface movieInterface){
-        return new MainPresenterImp(mainView, movieInterface);
+    MainPresenter provideMainPresenter(MainView mainView){
+        return new MainPresenterImp(mainView);
     }
 
 }

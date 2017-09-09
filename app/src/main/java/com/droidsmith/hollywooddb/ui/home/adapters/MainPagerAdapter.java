@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.droidsmith.hollywooddb.ui.home.fragments.FavoritesFragment;
 import com.droidsmith.hollywooddb.ui.home.fragments.HistoryFragment;
-import com.droidsmith.hollywooddb.ui.home.fragments.HomeFragment;
+import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragment;
 import com.droidsmith.hollywooddb.ui.home.fragments.MoviesFragment;
 import com.droidsmith.hollywooddb.ui.home.fragments.TVFragment;
 

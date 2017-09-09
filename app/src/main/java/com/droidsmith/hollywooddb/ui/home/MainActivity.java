@@ -2,6 +2,7 @@ package com.droidsmith.hollywooddb.ui.home;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -11,17 +12,23 @@ import android.view.MenuItem;
 
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.ui.home.adapters.MainPagerAdapter;
+import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragment;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
 //TODO: Fix the page swipe issue
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector, MainView {
 
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
 
     @BindView(R.id.main_viewpager)
     ViewPager mainViewpager;
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Inject
     MainPresenter presenter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -47,8 +56,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         setupBottomNavigationView();
         setupViewPager();
-
-        presenter.checkNetworkCall();
 
 
     }
@@ -124,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
 
+
     ////////////////
     //Toolbar menu
     ////////////////
@@ -151,4 +159,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
 }

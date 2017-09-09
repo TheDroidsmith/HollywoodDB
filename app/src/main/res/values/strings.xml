@@ -24,4 +24,7 @@
     <string name="card_title_highest_rated_tv">Highest Rated</string>
     <string name="card_title_upcoming_tv">Upcoming TV Shows</string>
     <string name="card_title_classic_tv">Classic TV Shows</string>
+
+    <!--Content Description-->
+    <string name="content_desc_poster">Poster Image</string>
 </resources>
