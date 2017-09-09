@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb;
+package com.droidsmith.hollywooddb.view.activities;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,15 +9,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.droidsmith.hollywooddb.view.adapters.MainPagerAdapter;
-import com.droidsmith.hollywooddb.view.MainView;
+import com.droidsmith.hollywooddb.R;
+import com.droidsmith.hollywooddb.presenter.MainPresenter;
+import com.droidsmith.hollywooddb.view.activities.adapters.MainPagerAdapter;
+import com.droidsmith.hollywooddb.view.activities.views.MainView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.android.AndroidInjection;
 
 //TODO: Fix the page swipe issue
 
-public class MainActivity extends AppCompatActivity implements MainView{
+public class MainActivity extends AppCompatActivity implements MainView {
 
 
     @BindView(R.id.main_viewpager)
@@ -26,11 +31,15 @@ public class MainActivity extends AppCompatActivity implements MainView{
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
+    //keeps track of bottom navigation pages
     private MenuItem prevMenuItem;
 
+    @Inject
+    MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -40,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
         setupBottomNavigationView();
         setupViewPager();
+
+        presenter.checkPresenter();
 
 
     }
@@ -115,6 +126,9 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
 
+    ////////////////
+    //Toolbar menu
+    ////////////////
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
@@ -133,8 +147,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
                 return true;
             case R.id.dummy_item1:
                 return true;
-
-
 
         }
 

@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.fragments;
+package com.droidsmith.hollywooddb.view.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.fragments.view.FavoritesFragmentView;
+import com.droidsmith.hollywooddb.view.fragments.views.FavoritesFragmentView;
 
 
 public class FavoritesFragment extends Fragment implements FavoritesFragmentView {

@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.fragments;
+package com.droidsmith.hollywooddb.view.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.fragments.view.HomeFragmentView;
+import com.droidsmith.hollywooddb.view.fragments.views.MoviesFragmentView;
 
 
-public class HomeFragment extends Fragment implements HomeFragmentView {
+public class MoviesFragment extends Fragment implements MoviesFragmentView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.home_frag, container, false);
+                R.layout.movies_frag, container, false);
 
         return rootView;
     }
