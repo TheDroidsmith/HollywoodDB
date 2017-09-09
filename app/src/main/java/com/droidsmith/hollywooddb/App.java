@@ -4,8 +4,8 @@ package com.droidsmith.hollywooddb;
 import android.app.Activity;
 import android.app.Application;
 
-import com.droidsmith.hollywooddb.dagger.AppComponent;
-import com.droidsmith.hollywooddb.dagger.DaggerAppComponent;
+
+import com.droidsmith.hollywooddb.injection.component.DaggerAppComponent;
 
 import javax.inject.Inject;
 
