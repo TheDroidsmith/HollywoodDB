@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.ui.home.fragments;
+package com.droidsmith.hollywooddb.ui.main.fragments.favorites;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.ui.home.fragments.views.TVFragmentView;
 
 
-public class TVFragment extends Fragment implements TVFragmentView {
+public class FavoritesFragment extends Fragment implements FavoritesFragmentView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.tv_frag, container, false);
+                R.layout.favorites_frag, container, false);
 
         return rootView;
     }

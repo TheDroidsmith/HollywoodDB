@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.ui.home.fragments;
+package com.droidsmith.hollywooddb.ui.main.fragments.history;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.ui.home.fragments.views.HistoryFragmentView;
 
 
 public class HistoryFragment extends Fragment implements HistoryFragmentView {

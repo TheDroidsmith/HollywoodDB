@@ -1,10 +1,11 @@
 package com.droidsmith.hollywooddb.injection.module;
 
+import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragment;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragmentPresenter;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragmentPresenterImp;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragmentView;
+import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragmentPresenter;
+import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragmentPresenterImp;
+import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragmentView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,8 +20,8 @@ public class HomeFragmentModule {
     }
 
     @Provides
-    HomeFragmentPresenter provideHomeFragmentPresenter(HomeFragmentView homeFragmentView, TMDBInterface movieInterface){
-        return new HomeFragmentPresenterImp(homeFragmentView,movieInterface);
+    HomeFragmentPresenter provideHomeFragmentPresenter(HomeFragmentView homeFragmentView, NetworkManager networkManager){
+        return new HomeFragmentPresenterImp(homeFragmentView,networkManager);
     }
 
 }

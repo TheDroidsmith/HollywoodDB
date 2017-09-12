@@ -1,7 +1,7 @@
 package com.droidsmith.hollywooddb.injection.component;
 
 import com.droidsmith.hollywooddb.injection.module.HomeFragmentModule;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;

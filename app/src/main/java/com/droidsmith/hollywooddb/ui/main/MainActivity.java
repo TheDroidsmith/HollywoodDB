@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.ui.home;
+package com.droidsmith.hollywooddb.ui.main;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,8 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.ui.home.adapters.MainPagerAdapter;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragment;
+import com.droidsmith.hollywooddb.ui.main.adapters.MainPagerAdapter;
 
 import javax.inject.Inject;
 

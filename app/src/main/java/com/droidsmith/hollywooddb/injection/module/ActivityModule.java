@@ -3,7 +3,7 @@ package com.droidsmith.hollywooddb.injection.module;
 
 import android.app.Activity;
 
-import com.droidsmith.hollywooddb.ui.home.MainActivity;
+import com.droidsmith.hollywooddb.ui.main.MainActivity;
 import com.droidsmith.hollywooddb.injection.component.MainActivityComponent;
 
 import dagger.Binds;

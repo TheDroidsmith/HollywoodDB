@@ -1,14 +1,14 @@
-package com.droidsmith.hollywooddb.ui.home.adapters;
+package com.droidsmith.hollywooddb.ui.main.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.droidsmith.hollywooddb.ui.home.fragments.FavoritesFragment;
-import com.droidsmith.hollywooddb.ui.home.fragments.HistoryFragment;
-import com.droidsmith.hollywooddb.ui.home.fragments.home.HomeFragment;
-import com.droidsmith.hollywooddb.ui.home.fragments.MoviesFragment;
-import com.droidsmith.hollywooddb.ui.home.fragments.TVFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.favorites.FavoritesFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.history.HistoryFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.tv.TVFragment;
 
 
 public class MainPagerAdapter extends FragmentStatePagerAdapter {

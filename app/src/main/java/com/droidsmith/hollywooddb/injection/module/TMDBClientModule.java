@@ -38,6 +38,7 @@ public class TMDBClientModule {
 
         return retrofit;
     }
+
     @Provides
     TMDBInterface provideMovieInterface(Retrofit retrofit){
         return retrofit.create(TMDBInterface.class);

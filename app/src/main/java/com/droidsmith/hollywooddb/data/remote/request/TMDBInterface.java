@@ -5,6 +5,9 @@ package com.droidsmith.hollywooddb.data.remote.request;
 
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMovies;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTV;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTV;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -17,5 +20,11 @@ public interface TMDBInterface {
 
     @GET("movie/popular")
     Call<PopularMovies> doGetPopularMovies(@Query("api_key") String apiKey);
+
+    @GET("tv/popular")
+    Call<PopularTV> doGetPopularTV(@Query("api_key") String apiKey);
+
+    @GET("tv/top_rated")
+    Call<TopTV> doGetTopRatedTV(@Query("api_key") String apiKey);
 
 }
