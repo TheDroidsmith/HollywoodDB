@@ -14,33 +14,22 @@ import com.droidsmith.hollywooddb.ui.base.BasePresenter;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeFragmentView> implements HomeContract.HomeFragmentPresenter {
+public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeView> implements HomeContract.HomePresenter {
 
-    //private final CompositeDisposable disposables = new CompositeDisposable();
-
-//    @Inject
-//    public HomeFragmentView view;
 
     @Inject
     public NetworkManager networkManager;
 
     @Inject
-    public HomeFragmentPresenterImp(HomeContract.HomeFragmentView view, NetworkManager networkManager) {
+    public HomeFragmentPresenterImp(HomeContract.HomeView view, NetworkManager networkManager) {
         super(view);
-        //this.view = view;
         this.networkManager = networkManager;
     }
 
-
-//    public void addDisposable(Disposable disposable) {
-//        disposables.add(disposable);
-//    }
 
 
     @Override

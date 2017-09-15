@@ -6,17 +6,20 @@ import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeContract;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragmentPresenterImp;
+import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesContract;
+import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesFragment;
+import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesPresenterImp;
 
 import dagger.Module;
 import dagger.Provides;
 
-//Module for sub-component HomeFragmentComponent
+//Module for sub-component MoviesFragmentComponent
 @Module
-public class HomeFragmentModule {
+public class MoviesFragmentModule {
 
     @Provides
-    HomeContract.HomeView provideHomeFragmentView(HomeFragment homeFragment){
-        return homeFragment;
+    MoviesContract.MoviesView provideMoviesFragmentView(MoviesFragment moviesFragment){
+        return moviesFragment;
     }
 
     @Provides
@@ -25,8 +28,8 @@ public class HomeFragmentModule {
     }
 
     @Provides
-    HomeContract.HomePresenter provideHomeFragmentPresenter(HomeContract.HomeView homeView, NetworkManager networkManager){
-        return new HomeFragmentPresenterImp(homeView,networkManager);
+    MoviesContract.MoviesPresenter provideMoviesFragmentPresenter(MoviesContract.MoviesView moviesView, NetworkManager networkManager){
+        return new MoviesPresenterImp(moviesView,networkManager);
     }
 
 }

@@ -13,10 +13,9 @@ import android.view.ViewGroup;
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
-import com.droidsmith.hollywooddb.ui.main.fragments.home.adapters.PopularMoviesListAdapter;
-import com.droidsmith.hollywooddb.ui.main.fragments.home.adapters.PopularTVListAdapter;
+import com.droidsmith.hollywooddb.ui.main.adapters.MovieListAdapter;
+import com.droidsmith.hollywooddb.ui.main.adapters.TVShowListAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,7 +26,9 @@ import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
 
 
-public class HomeFragment extends Fragment implements HomeContract.HomeFragmentView{
+public class HomeFragment extends Fragment implements HomeContract.HomeView {
+
+    Unbinder unbinder;
 
     @BindView(R.id.popularMovieList)
     RecyclerView popularMovieRecyclerView;
@@ -35,13 +36,11 @@ public class HomeFragment extends Fragment implements HomeContract.HomeFragmentV
     @BindView(R.id.popularTVList)
     RecyclerView popularTVRecyclerView;
 
-    PopularMoviesListAdapter popularMovieListAdapter;
-    PopularTVListAdapter popularTVListAdapter;
+    MovieListAdapter popularMovieListAdapter;
+    TVShowListAdapter popularTVListAdapter;
 
     @Inject
-    HomeContract.HomeFragmentPresenter presenter;
-
-    Unbinder unbinder;
+    HomeContract.HomePresenter presenter;
 
     public static HomeFragment newInstance(){
 
@@ -82,7 +81,7 @@ public class HomeFragment extends Fragment implements HomeContract.HomeFragmentV
         popularMovieLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         popularMovieRecyclerView.setLayoutManager(popularMovieLayoutManager);
 
-        popularMovieListAdapter = new PopularMoviesListAdapter(getActivity());
+        popularMovieListAdapter = new MovieListAdapter(getActivity());
         popularMovieRecyclerView.setAdapter(popularMovieListAdapter);
 
 
@@ -91,7 +90,7 @@ public class HomeFragment extends Fragment implements HomeContract.HomeFragmentV
         popularTVLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         popularTVRecyclerView.setLayoutManager(popularTVLayoutManager);
 
-        popularTVListAdapter = new PopularTVListAdapter((getActivity()));
+        popularTVListAdapter = new TVShowListAdapter((getActivity()));
         popularTVRecyclerView.setAdapter(popularTVListAdapter);
 
         presenter.fetchPopularMoviesList();
@@ -111,7 +110,6 @@ public class HomeFragment extends Fragment implements HomeContract.HomeFragmentV
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-
     }
 
     @Override

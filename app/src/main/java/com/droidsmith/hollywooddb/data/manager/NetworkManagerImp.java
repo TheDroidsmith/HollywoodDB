@@ -3,7 +3,9 @@ package com.droidsmith.hollywooddb.data.manager;
 
 
 import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
@@ -27,6 +29,15 @@ public class NetworkManagerImp implements NetworkManager{
     public Observable<PopularTVResponse> apiPopularTV(){
         return tmdbInterface.getPopularTV(API_KEY);
     }
+
+    @Override
+    public Observable<LatestMoviesResponse> apiLatestMovies(){
+        return tmdbInterface.getLatestMovies(API_KEY);
+    }
+
+    @Override
+    public Observable<UpcomingMoviesResponse> apiUpcomingMovies() {
+        return tmdbInterface.getUpcomingMovies(API_KEY);    }
 
     @Override
     public Observable<TopTVResponse> apiTopTV() {

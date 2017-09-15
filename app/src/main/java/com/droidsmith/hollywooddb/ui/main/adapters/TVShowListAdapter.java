@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.ui.main.fragments.home.adapters;
+package com.droidsmith.hollywooddb.ui.main.adapters;
 
 
 import android.content.Context;
@@ -11,74 +11,73 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopularMoviesListAdapter extends RecyclerView.Adapter<PopularMoviesListAdapter.ViewHolder> {
+public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.ViewHolder>  {
 
 
     private Context context;
-    private List<Movie> movieList;
+    private List<TVShow> TVList;
 
 
     private static final String IMAGE_URL_BASE_PATH = "http://image.tmdb.org/t/p/w342//";
 
-    public PopularMoviesListAdapter(ArrayList<Movie> movieList, Context context) {
-        this.movieList = movieList;
+    public TVShowListAdapter(List<TVShow> TVList, Context context) {
+        this.TVList = TVList;
         this.context = context;
     }
 
-    public PopularMoviesListAdapter(Context context) {
-
-        this.movieList = new ArrayList<>();
+    public TVShowListAdapter(Context context) {
+        this.TVList = new ArrayList<>();
         this.context = context;
     }
 
-    public void setResults(List<Movie> results){
-        this.movieList = results;
+    public void setResults(List<TVShow> results){
+        this.TVList = results;
         notifyDataSetChanged();
     }
 
     @Override
-    public PopularMoviesListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TVShowListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_thumbnail_movie,parent,false);
+
         //ButterKnife.bind(context, v);
-        return new ViewHolder(v);
+        return new TVShowListAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(PopularMoviesListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(TVShowListAdapter.ViewHolder holder, int position) {
 
         Picasso.with(context)
-                .load(IMAGE_URL_BASE_PATH + movieList.get(position).posterPath)
+                .load(IMAGE_URL_BASE_PATH + TVList.get(position).posterPath)
                 .into(holder.getPoster());
 
-        holder.getTitle().setText(movieList.get(position).title);
+        holder.getTitle().setText(TVList.get(position).name);
 
     }
 
     @Override
     public int getItemCount() {
-        return movieList.size();
+        return TVList.size();
     }
 
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        //@BindView(R.id.thumb_poster)
-        ImageButton poster;
 
-        //@BindView(R.id.thumb_title)
+        //@BindView(R.id.thumb_poster)
         TextView title;
 
+        //@BindView(R.id.thumb_title)
+        ImageButton poster;
 
         private ViewHolder(View movieCard) {
             super(movieCard);
-
             poster = (ImageButton) movieCard.findViewById(R.id.thumb_poster);
             title = (TextView) movieCard.findViewById(R.id.thumb_title);
         }
@@ -94,6 +93,7 @@ public class PopularMoviesListAdapter extends RecyclerView.Adapter<PopularMovies
 
 
     }
+
 
 
 }

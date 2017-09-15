@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface HomeContract {
 
-    interface HomeFragmentPresenter {
+    interface HomePresenter {
 
         void fetchPopularMoviesList();
 
@@ -20,7 +20,7 @@ public interface HomeContract {
 
     }
 
-    interface HomeFragmentView {
+    interface HomeView {
 
         void updatePopularMovieList(List<Movie> results);
 
