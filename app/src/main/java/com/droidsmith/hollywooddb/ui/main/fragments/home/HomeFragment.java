@@ -11,12 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResults;
-import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResults;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.adapters.PopularMoviesListAdapter;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.adapters.PopularTVListAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -79,21 +80,26 @@ public class HomeFragment extends Fragment implements HomeFragmentView{
         popularTVListAdapter = new PopularTVListAdapter((getActivity()));
         popularTVRecyclerView.setAdapter(popularTVListAdapter);
 
-        //presenter.callPopularMovies();
-        //presenter.callPopularTV();
+        presenter.fetchPopularMoviesList();
+        presenter.fetchPopularTVList();
 
 
         return rootView;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.stop();
+    }
 
     @Override
-    public void updatePopularMovieList(ArrayList<PopularMoviesResults> results){
+    public void updatePopularMovieList(List<Movie> results){
         popularMovieListAdapter.setResults(results);
     }
 
     @Override
-    public void updatePopularTVList(ArrayList<PopularTVResults> results) {
+    public void updatePopularTVList(List<TVShow> results) {
         popularTVListAdapter.setResults(results);
     }
 }

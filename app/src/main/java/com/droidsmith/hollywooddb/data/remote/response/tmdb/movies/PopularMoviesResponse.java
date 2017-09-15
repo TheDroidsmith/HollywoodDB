@@ -1,16 +1,13 @@
 package com.droidsmith.hollywooddb.data.remote.response.tmdb.movies;
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class SpokenLanguage {
+import java.util.List;
 
-    @SerializedName("iso_639_1")
+public class PopularMoviesResponse {
+    @SerializedName("results")
     @Expose
-    public String iso6391;
-    @SerializedName("name")
-    @Expose
-    public String name;
+    public List<Movie> results = null;
 
 }

@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     }
 
-
+    //TODO: in Fragments too? unbinder = ButterKnife.bind(this, layout); in onCreateView and unbinder.unbind() in onDestroyView
 
     ////////////////
     //Toolbar menu

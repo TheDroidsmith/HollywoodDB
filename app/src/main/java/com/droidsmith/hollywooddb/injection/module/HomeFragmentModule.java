@@ -1,6 +1,7 @@
 package com.droidsmith.hollywooddb.injection.module;
 
 import com.droidsmith.hollywooddb.data.manager.NetworkManager;
+import com.droidsmith.hollywooddb.data.manager.NetworkManagerImp;
 import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragmentPresenter;
@@ -17,6 +18,11 @@ public class HomeFragmentModule {
     @Provides
     HomeFragmentView provideHomeFragmentView(HomeFragment homeFragment){
         return homeFragment;
+    }
+
+    @Provides
+    NetworkManager provideNetworkManager(TMDBInterface tmdbInterface){
+        return new NetworkManagerImp(tmdbInterface);
     }
 
     @Provides

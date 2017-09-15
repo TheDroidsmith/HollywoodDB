@@ -3,6 +3,7 @@ package com.droidsmith.hollywooddb.injection.module;
 import android.app.Application;
 
 import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import javax.inject.Singleton;
 
@@ -31,8 +32,9 @@ public class TMDBClientModule {
     Retrofit provideRetrofit(OkHttpClient client){
         @SuppressWarnings("Redundancy")
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
                 .client(client)
                 .build();
 

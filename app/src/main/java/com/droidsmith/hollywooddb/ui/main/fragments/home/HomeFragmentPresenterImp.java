@@ -4,14 +4,30 @@ package com.droidsmith.hollywooddb.ui.main.fragments.home;
 import android.util.Log;
 
 import com.droidsmith.hollywooddb.data.manager.NetworkManager;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
+
 
 import javax.inject.Inject;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class HomeFragmentPresenterImp implements HomeFragmentPresenter {
 
-    private HomeFragmentView view;
-    private NetworkManager networkManager;
+    private final CompositeDisposable disposables = new CompositeDisposable();
+
+    @Inject
+    public HomeFragmentView view;
+
+    @Inject
+    public NetworkManager networkManager;
 
     @Inject
     public HomeFragmentPresenterImp(HomeFragmentView view, NetworkManager networkManager) {
@@ -20,18 +36,74 @@ public class HomeFragmentPresenterImp implements HomeFragmentPresenter {
     }
 
 
+    public void addDisposable(Disposable disposable) {
+        disposables.add(disposable);
+    }
+
+    public void stop() {
+        disposables.dispose();//maybe clear()?
+    }
+
     @Override
     public void fetchPopularMoviesList() {
-        //view.updatePopularMovieList(networkManager.callPopularMovies());
+        //make a facade class so this can be tested for schedulers.
+        //But, don't forget to check trampoline.
+        addDisposable(
+                networkManager.apiPopularMovies()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<PopularMoviesResponse>() {
+                    @Override
+                    public void onNext(PopularMoviesResponse PopularMoviesResponse) {
+                        view.updatePopularMovieList(PopularMoviesResponse.results);
+                        for (Movie movie : PopularMoviesResponse.results) {
+                            Log.d("Popular Movies ---->", "Movie ---- " + movie.title);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("Pop Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d("Pop Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                    }
+                }));
+
     }
 
     @Override
     public void fetchPopularTVList() {
-        //view.updatePopularTVList(networkManager.callPopularTV());
+        //make a facade class so this can be tested for schedulers.
+        //But, don't forget to check trampoline.
+        addDisposable(
+                networkManager.apiPopularTV()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<PopularTVResponse>() {
+                            @Override
+                            public void onNext(PopularTVResponse popularTVResponse) {
+                                view.updatePopularTVList(popularTVResponse.results);
+                                for (TVShow show : popularTVResponse.results) {
+                                    Log.d("Popular Show ---->", "Show ---- " + show.name);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d("Pop TV OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                Log.d("PopTV Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                            }
+                        }));
     }
 
     @Override
     public void fetchTopTVList() {
-        networkManager.callTopTV();
+        //networkManager.callTopTV();
     }
 }

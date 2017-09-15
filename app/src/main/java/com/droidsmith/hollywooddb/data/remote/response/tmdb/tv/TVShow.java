@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class PopularTVResults {
+public class TVShow {
     @SerializedName("original_name")
     @Expose
     public String originalName;
@@ -39,7 +39,7 @@ public class PopularTVResults {
     public Integer id;
     @SerializedName("vote_average")
     @Expose
-    public Integer voteAverage;
+    public Double voteAverage;
     @SerializedName("overview")
     @Expose
     public String overview;

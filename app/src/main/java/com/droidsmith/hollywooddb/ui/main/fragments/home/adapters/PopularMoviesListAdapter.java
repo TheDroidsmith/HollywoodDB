@@ -11,21 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResults;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PopularMoviesListAdapter extends RecyclerView.Adapter<PopularMoviesListAdapter.ViewHolder> {
 
 
     private Context context;
-    private ArrayList<PopularMoviesResults> movieList;
+    private List<Movie> movieList;
 
 
     private static final String IMAGE_URL_BASE_PATH = "http://image.tmdb.org/t/p/w342//";
 
-    public PopularMoviesListAdapter(ArrayList<PopularMoviesResults> movieList, Context context) {
+    public PopularMoviesListAdapter(ArrayList<Movie> movieList, Context context) {
         this.movieList = movieList;
         this.context = context;
     }
@@ -36,7 +37,7 @@ public class PopularMoviesListAdapter extends RecyclerView.Adapter<PopularMovies
         this.context = context;
     }
 
-    public void setResults(ArrayList<PopularMoviesResults> results){
+    public void setResults(List<Movie> results){
         this.movieList = results;
         notifyDataSetChanged();
     }
