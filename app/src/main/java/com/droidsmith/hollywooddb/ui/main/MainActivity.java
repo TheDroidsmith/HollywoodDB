@@ -17,6 +17,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+
+    Unbinder unbinder;
 
     @BindView(R.id.main_viewpager)
     ViewPager mainViewpager;
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
 
         PagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         mainViewpager.setAdapter(pagerAdapter);
@@ -57,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         setupViewPager();
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 
 
@@ -126,10 +135,8 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
                 pageChangeListener.onPageSelected(mainViewpager.getCurrentItem());
             }
         });
-
     }
 
-    //TODO: in Fragments too? unbinder = ButterKnife.bind(this, layout); in onCreateView and unbinder.unbind() in onDestroyView
 
     ////////////////
     //Toolbar menu

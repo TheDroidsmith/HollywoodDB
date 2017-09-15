@@ -24,17 +24,17 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new HomeFragment();
+                return HomeFragment.newInstance();
             case 1:
-                return new MoviesFragment();
+                return MoviesFragment.newInstance();
             case 2:
-                return new TVFragment();
+                return TVFragment.newInstance();
             case 3:
-                return new FavoritesFragment();
+                return FavoritesFragment.newInstance();
             case 4:
-                return new HistoryFragment();
+                return HistoryFragment.newInstance();
             default:
-                return new HomeFragment();
+                return HomeFragment.newInstance();
         }
 
     }

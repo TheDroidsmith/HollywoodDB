@@ -8,8 +8,22 @@ import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 public class FavoritesFragment extends Fragment implements FavoritesFragmentView {
+
+
+
+    Unbinder unbinder;
+
+    public static FavoritesFragment newInstance() {
+        FavoritesFragment fragment = new FavoritesFragment();
+        return fragment;
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -18,7 +32,14 @@ public class FavoritesFragment extends Fragment implements FavoritesFragmentView
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.favorites_frag, container, false);
 
+        unbinder = ButterKnife.bind(this, rootView);
+
         return rootView;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

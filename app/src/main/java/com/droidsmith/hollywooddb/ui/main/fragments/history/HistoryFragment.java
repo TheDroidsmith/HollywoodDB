@@ -8,8 +8,20 @@ import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 public class HistoryFragment extends Fragment implements HistoryFragmentView {
+
+    Unbinder unbinder;
+
+
+    public static HistoryFragment newInstance() {
+        HistoryFragment fragment = new HistoryFragment();
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -18,7 +30,14 @@ public class HistoryFragment extends Fragment implements HistoryFragmentView {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.history_frag, container, false);
 
+        unbinder = ButterKnife.bind(this, rootView);
+
         return rootView;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

@@ -8,6 +8,7 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
+import com.droidsmith.hollywooddb.ui.base.BasePresenter;
 
 
 import javax.inject.Inject;
@@ -19,30 +20,28 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class HomeFragmentPresenterImp implements HomeFragmentPresenter {
+public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeFragmentView> implements HomeContract.HomeFragmentPresenter {
 
-    private final CompositeDisposable disposables = new CompositeDisposable();
+    //private final CompositeDisposable disposables = new CompositeDisposable();
 
-    @Inject
-    public HomeFragmentView view;
+//    @Inject
+//    public HomeFragmentView view;
 
     @Inject
     public NetworkManager networkManager;
 
     @Inject
-    public HomeFragmentPresenterImp(HomeFragmentView view, NetworkManager networkManager) {
-        this.view = view;
+    public HomeFragmentPresenterImp(HomeContract.HomeFragmentView view, NetworkManager networkManager) {
+        super(view);
+        //this.view = view;
         this.networkManager = networkManager;
     }
 
 
-    public void addDisposable(Disposable disposable) {
-        disposables.add(disposable);
-    }
+//    public void addDisposable(Disposable disposable) {
+//        disposables.add(disposable);
+//    }
 
-    public void stop() {
-        disposables.dispose();//maybe clear()?
-    }
 
     @Override
     public void fetchPopularMoviesList() {

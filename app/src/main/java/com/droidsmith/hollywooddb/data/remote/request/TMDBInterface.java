@@ -25,7 +25,6 @@ public interface TMDBInterface {
     @GET("tv/top_rated")
     Observable<TopTVResponse> getTopRatedTV(@Query("api_key") String apiKey);
 
-
     @GET("movie/{id}")
     Call<Movie> doGetMovie(@Path("id") Integer movieID, @Query("api_key") String apiKey);
 

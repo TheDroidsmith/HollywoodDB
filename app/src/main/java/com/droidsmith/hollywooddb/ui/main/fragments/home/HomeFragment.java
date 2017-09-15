@@ -23,10 +23,11 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
 
 
-public class HomeFragment extends Fragment implements HomeFragmentView{
+public class HomeFragment extends Fragment implements HomeContract.HomeFragmentView{
 
     @BindView(R.id.popularMovieList)
     RecyclerView popularMovieRecyclerView;
@@ -38,15 +39,28 @@ public class HomeFragment extends Fragment implements HomeFragmentView{
     PopularTVListAdapter popularTVListAdapter;
 
     @Inject
-    HomeFragmentPresenter presenter;
+    HomeContract.HomeFragmentPresenter presenter;
 
-    //TODO: get new instance for this
+    Unbinder unbinder;
 
+    public static HomeFragment newInstance(){
+
+        HomeFragment fragment = new HomeFragment();
+
+        //If fragment needs anything, use this here and
+        //use getArguments in onCreate()
+        //Bundle args = new Bundle();
+        //fragment.setArguments(args);
+
+        return fragment;
+
+    }
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getArguments() if any
     }
 
     @Override
@@ -60,7 +74,7 @@ public class HomeFragment extends Fragment implements HomeFragmentView{
                              Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.home_frag, container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
 
         //setup popular movie list
@@ -91,6 +105,13 @@ public class HomeFragment extends Fragment implements HomeFragmentView{
     public void onStop() {
         super.onStop();
         presenter.stop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+
     }
 
     @Override
