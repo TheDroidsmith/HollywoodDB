@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
 import com.droidsmith.hollywooddb.ui.main.adapters.TVShowListAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -112,17 +115,47 @@ public class TVFragment extends Fragment implements TVContract.TVView{
 
 
     private void fetchData() {
-
+        presenter.fetchAiringTodayList();
+        presenter.fetchOnTheAirList();
+        presenter.fetchPopularTVList();
+        presenter.fetchTopRatedList();
     }
-
 
 
 
 
 
     @Override
+    public void updateAiringTodayList(List<TVShow> results) {
+        airingTodayAdapter.setResults(results);
+    }
+
+    @Override
+    public void updateOnTheAirList(List<TVShow> results) {
+        onTheAirAdapter.setResults(results);
+    }
+
+    @Override
+    public void updatePopularTVList(List<TVShow> results) {
+        popularTVAdapter.setResults(results);
+    }
+
+    @Override
+    public void updateTopRatedList(List<TVShow> results) {
+        topRatedAdapter.setResults(results);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.stop();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
+
 }
