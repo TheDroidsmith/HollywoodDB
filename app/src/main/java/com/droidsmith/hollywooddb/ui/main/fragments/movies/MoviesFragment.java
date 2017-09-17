@@ -36,11 +36,11 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
     @BindView(R.id.upcomingMoviesList)
     RecyclerView upcomingMoviesRecyclerView;
 
-    @BindView(R.id.classicMoviesList)
-    RecyclerView classicMoviesRecyclerView;
+    @BindView(R.id.nowPLayingMoviesList)
+    RecyclerView nowPlayingMoviesRecyclerView;
 
     MovieListAdapter newestMoviesAdapter, highestRatedMoviesAdapter,
-            upcomingMoviesAdapter, classicMoviesAdapter;
+            upcomingMoviesAdapter, nowPlayingAdapter;
 
     @Inject
     MoviesContract.MoviesPresenter presenter;
@@ -50,11 +50,13 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
         return fragment;
     }
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         AndroidSupportInjection.inject(this);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +65,10 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.movies_frag, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-        setupRecyclerViews();
+        setupUpcoming();
+        setupHighestRated();
+        setupNewest();
+        setupNowPlaying();
 
         //call api
         fetchData();
@@ -72,9 +77,55 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
         return rootView;
     }
 
+
+
+    private void setupNowPlaying(){
+        LinearLayoutManager nowPlayingLayoutManager = new LinearLayoutManager(getActivity());
+        nowPlayingLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        nowPlayingMoviesRecyclerView.setLayoutManager(nowPlayingLayoutManager);
+
+        nowPlayingAdapter = new MovieListAdapter(getActivity());
+        nowPlayingMoviesRecyclerView.setAdapter(nowPlayingAdapter);
+    }
+    private void setupHighestRated(){
+        LinearLayoutManager highestRatedLayoutManager = new LinearLayoutManager(getActivity());
+        highestRatedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        highestRatedMoviesRecyclerView.setLayoutManager(highestRatedLayoutManager);
+
+        highestRatedMoviesAdapter = new MovieListAdapter(getActivity());
+        highestRatedMoviesRecyclerView.setAdapter(highestRatedMoviesAdapter);
+    }
+    private void setupUpcoming(){
+        LinearLayoutManager upcomingMoviesLayoutManager = new LinearLayoutManager(getActivity());
+        upcomingMoviesLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        upcomingMoviesRecyclerView.setLayoutManager(upcomingMoviesLayoutManager);
+
+        upcomingMoviesAdapter = new MovieListAdapter(getActivity());
+        upcomingMoviesRecyclerView.setAdapter(upcomingMoviesAdapter);
+    }
+    private void setupNewest(){
+        LinearLayoutManager newestMoviesLayoutManager = new LinearLayoutManager(getActivity());
+        newestMoviesLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        newestMoviesRecyclerView.setLayoutManager(newestMoviesLayoutManager);
+
+        newestMoviesAdapter = new MovieListAdapter(getActivity());
+        newestMoviesRecyclerView.setAdapter(newestMoviesAdapter);
+    }
+
+
     private void fetchData() {
-        //presenter.fetchLatestMoviesList();//api returning null
+        //presenter.fetchLatestMoviesList(); //api returning null
         presenter.fetchUpcomingMoviesList();
+        presenter.fetchTopRatedMoviesList();
+        presenter.fetchNowPlayingMoviesList();
+    }
+
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.stop();
     }
 
     @Override
@@ -85,41 +136,6 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
 
 
 
-    private void setupRecyclerViews(){
-        //setup newest movies LayoutManager
-        LinearLayoutManager newestMoviesLayoutManager = new LinearLayoutManager(getActivity());
-        newestMoviesLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        newestMoviesRecyclerView.setLayoutManager(newestMoviesLayoutManager);
-
-        //setup upcoming movies LayoutManager
-        LinearLayoutManager upcomingMoviesLayoutManager = new LinearLayoutManager(getActivity());
-        upcomingMoviesLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        upcomingMoviesRecyclerView.setLayoutManager(upcomingMoviesLayoutManager);
-
-        //setup highest rated movies LayoutManager
-        LinearLayoutManager highestRatedLayoutManager = new LinearLayoutManager(getActivity());
-        highestRatedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        highestRatedMoviesRecyclerView.setLayoutManager(highestRatedLayoutManager);
-
-        //setup classic movies LayoutManager
-        LinearLayoutManager classicLayoutManager = new LinearLayoutManager(getActivity());
-        classicLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        classicMoviesRecyclerView.setLayoutManager(classicLayoutManager);
-
-        //instantiate adapters
-        newestMoviesAdapter = new MovieListAdapter(getActivity());
-        highestRatedMoviesAdapter = new MovieListAdapter(getActivity());
-        upcomingMoviesAdapter = new MovieListAdapter(getActivity());
-        classicMoviesAdapter = new MovieListAdapter(getActivity());
-
-        //assign adapters
-        newestMoviesRecyclerView.setAdapter(newestMoviesAdapter);
-        highestRatedMoviesRecyclerView.setAdapter(highestRatedMoviesAdapter);
-        upcomingMoviesRecyclerView.setAdapter(upcomingMoviesAdapter);
-        classicMoviesRecyclerView.setAdapter(classicMoviesAdapter);
-
-    }
-
 
     @Override
     public void updateNewestMoviesList(List<Movie> results) {
@@ -127,7 +143,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
     }
 
     @Override
-    public void updateHighestRatedMoviesList(List<Movie> results) {
+    public void updateTopRatedMoviesList(List<Movie> results) {
         highestRatedMoviesAdapter.setResults(results);
     }
 
@@ -137,7 +153,10 @@ public class MoviesFragment extends Fragment implements MoviesContract.MoviesVie
     }
 
     @Override
-    public void updateClassicMoviesList(List<Movie> results) {
-        classicMoviesAdapter.setResults(results);
+    public void updateNowPlayingMoviesList(List<Movie> results) {
+        nowPlayingAdapter.setResults(results);
     }
+
+
+
 }

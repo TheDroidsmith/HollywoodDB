@@ -11,11 +11,11 @@ public interface MoviesContract {
 
         void updateNewestMoviesList(List<Movie> results);
 
-        void updateClassicMoviesList(List<Movie> results);
-
-        void updateHighestRatedMoviesList(List<Movie> results);
+        void updateTopRatedMoviesList(List<Movie> results);
 
         void updateUpcomingMoviesList(List<Movie> results);
+
+        void updateNowPlayingMoviesList(List<Movie> results);
 
     }
 
@@ -23,11 +23,13 @@ public interface MoviesContract {
 
         void fetchLatestMoviesList();
 
-        void fetchHighestRatedMoviesList();
+        void fetchTopRatedMoviesList();
+
+        void fetchNowPlayingMoviesList();
 
         void fetchUpcomingMoviesList();
 
-        void fetchClassicMoviesList();
+        void stop();
     }
 
 }

@@ -6,7 +6,9 @@ import android.util.Log;
 import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
 import com.droidsmith.hollywooddb.ui.base.BasePresenter;
 
@@ -48,7 +50,6 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
                             public void onError(Throwable e) {
                                 Log.d("Latest Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
                             }
-
                             @Override
                             public void onComplete() {
                                 Log.d("Latest Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
@@ -58,8 +59,30 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
     }
 
     @Override
-    public void fetchHighestRatedMoviesList() {
-
+    public void fetchTopRatedMoviesList() {
+        //make a facade class so this can be tested for schedulers.
+        //But, don't forget to check trampoline.
+        addDisposable(
+                networkManager.apiTopMovies()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<TopMoviesResponse>() {
+                            @Override
+                            public void onNext(TopMoviesResponse topMoviesResponse) {
+                                view.updateTopRatedMoviesList(topMoviesResponse.results);
+                                for (Movie movie : topMoviesResponse.results) {
+                                    Log.d("Top Movies ---->", "Movie ---- " + movie.title);
+                                }
+                            }
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d("Top Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                            }
+                            @Override
+                            public void onComplete() {
+                                Log.d("Top Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                            }
+                        }));
     }
 
     @Override
@@ -75,26 +98,48 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
                             public void onNext(UpcomingMoviesResponse upcomingMoviesResponse) {
                                 view.updateUpcomingMoviesList(upcomingMoviesResponse.results);
                                 for (Movie movie : upcomingMoviesResponse.results) {
-                                    Log.d("Latest Movies ---->", "Movie ---- " + movie.title);
+                                    Log.d("Upcoming Movies ---->", "Movie ---- " + movie.title);
                                 }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Latest Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                Log.d("Upcoming OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
                             }
-
                             @Override
                             public void onComplete() {
-                                Log.d("Latest Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                Log.d("Upcoming Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
                             }
                         }));
 
     }
 
     @Override
-    public void fetchClassicMoviesList() {
-
+    public void fetchNowPlayingMoviesList() {
+        //make a facade class so this can be tested for schedulers.
+        //But, don't forget to check trampoline.
+        addDisposable(
+                networkManager.apiNowPlayingMovies()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<NowPlayingMoviesResponse>() {
+                            @Override
+                            public void onNext(NowPlayingMoviesResponse nowPlayingMoviesResponse) {
+                                view.updateNowPlayingMoviesList(nowPlayingMoviesResponse.results);
+                                for (Movie movie : nowPlayingMoviesResponse.results) {
+                                    Log.d("NowPlaying Movies ---->", "Movie ---- " + movie.title);
+                                }
+                            }
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d("Now Playing OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                            }
+                            @Override
+                            public void onComplete() {
+                                Log.d("Now Playing Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                            }
+                        }));
     }
+
 
 
 }

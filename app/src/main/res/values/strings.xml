@@ -27,4 +27,5 @@
 
     <!--Content Description-->
     <string name="content_desc_poster">Poster Image</string>
+    <string name="card_title_now_playing_movies">Now Playing</string>
 </resources>

@@ -11,52 +11,10 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/newestMoviesCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_0"
-            card_view:cardCornerRadius="0dp"
-            card_view:cardElevation="@dimen/card_elevation_0">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/newestMoviesTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/card_title_newest_movies"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    card_view:layout_constraintLeft_toLeftOf="parent"
-                    card_view:layout_constraintTop_toTopOf="parent" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/newestMoviesList"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    card_view:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintHorizontal_bias="0.0"
-                    card_view:layout_constraintLeft_toLeftOf="parent"
-                    card_view:layout_constraintRight_toRightOf="parent"
-                    card_view:layout_constraintTop_toBottomOf="@+id/newestMoviesTitle"
-                    card_view:layout_constraintVertical_bias="0.506" />
-            </android.support.constraint.ConstraintLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/highestRatedMoviesCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_1"
+            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_0"
             card_view:cardCornerRadius="0dp"
             card_view:cardElevation="@dimen/card_elevation_1">
 
@@ -98,7 +56,7 @@
             android:id="@+id/upcomingMoviesCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_2"
+            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_1"
             card_view:cardCornerRadius="0dp"
             card_view:cardElevation="@dimen/card_elevation_2">
 
@@ -137,10 +95,10 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/classicMoviesCard"
+            android:id="@+id/nowPlayingMoviesCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_3"
+            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_2"
             card_view:cardCornerRadius="0dp"
             card_view:cardElevation="@dimen/card_elevation_3">
 
@@ -149,19 +107,19 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/classicMoviesTitle"
+                    android:id="@+id/nowPlayingMoviesTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/card_title_classic_movies"
+                    android:text="@string/card_title_now_playing_movies"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     card_view:layout_constraintLeft_toLeftOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/classicMoviesList"
+                    android:id="@+id/nowPLayingMoviesList"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -172,7 +130,49 @@
                     card_view:layout_constraintHorizontal_bias="0.0"
                     card_view:layout_constraintLeft_toLeftOf="parent"
                     card_view:layout_constraintRight_toRightOf="parent"
-                    card_view:layout_constraintTop_toBottomOf="@+id/classicMoviesTitle"
+                    card_view:layout_constraintTop_toBottomOf="@+id/nowPlayingMoviesTitle"
+                    card_view:layout_constraintVertical_bias="0.506" />
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/newestMoviesCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/card_bg_color_movies_blue_3"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardElevation="@dimen/card_elevation_0">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/newestMoviesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/card_title_newest_movies"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    card_view:layout_constraintLeft_toLeftOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/newestMoviesList"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintHorizontal_bias="0.0"
+                    card_view:layout_constraintLeft_toLeftOf="parent"
+                    card_view:layout_constraintRight_toRightOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/newestMoviesTitle"
                     card_view:layout_constraintVertical_bias="0.506" />
             </android.support.constraint.ConstraintLayout>
 

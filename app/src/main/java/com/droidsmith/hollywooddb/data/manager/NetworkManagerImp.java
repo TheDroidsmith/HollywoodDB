@@ -4,7 +4,9 @@ package com.droidsmith.hollywooddb.data.manager;
 
 import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
@@ -20,14 +22,10 @@ public class NetworkManagerImp implements NetworkManager{
         this.tmdbInterface = tmdbInterface;
     }
 
+
     @Override
     public Observable<PopularMoviesResponse> apiPopularMovies(){
         return tmdbInterface.getPopularMovies(API_KEY);
-    }
-
-    @Override
-    public Observable<PopularTVResponse> apiPopularTV(){
-        return tmdbInterface.getPopularTV(API_KEY);
     }
 
     @Override
@@ -36,13 +34,31 @@ public class NetworkManagerImp implements NetworkManager{
     }
 
     @Override
+    public Observable<TopMoviesResponse> apiTopMovies() {
+        return tmdbInterface.getTopMovies(API_KEY);
+    }
+
+    @Override
     public Observable<UpcomingMoviesResponse> apiUpcomingMovies() {
-        return tmdbInterface.getUpcomingMovies(API_KEY);    }
+        return tmdbInterface.getUpcomingMovies(API_KEY);
+    }
+
+    @Override
+    public Observable<NowPlayingMoviesResponse> apiNowPlayingMovies() {
+        return tmdbInterface.getNowPlayingMovies(API_KEY);
+    }
 
     @Override
     public Observable<TopTVResponse> apiTopTV() {
         return tmdbInterface.getTopRatedTV(API_KEY);
     }
+
+    @Override
+    public Observable<PopularTVResponse> apiPopularTV(){
+        return tmdbInterface.getPopularTV(API_KEY);
+    }
+
+
 
 
 }

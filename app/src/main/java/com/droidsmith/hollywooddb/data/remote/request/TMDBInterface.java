@@ -5,7 +5,9 @@ package com.droidsmith.hollywooddb.data.remote.request;
 
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
@@ -27,6 +29,12 @@ public interface TMDBInterface {
 
     @GET("movie/upcoming")
     Observable<UpcomingMoviesResponse> getUpcomingMovies(@Query("api_key") String apiKey);
+
+    @GET("movie/top_rated")
+    Observable<TopMoviesResponse> getTopMovies(@Query("api_key") String apiKey);
+
+    @GET("movie/now_playing")
+    Observable<NowPlayingMoviesResponse> getNowPlayingMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{id}")
     Call<Movie> doGetMovie(@Path("id") Integer movieID, @Query("api_key") String apiKey);
