@@ -1,12 +1,15 @@
 package com.droidsmith.hollywooddb.ui.base;
 
 
+import javax.inject.Inject;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 public abstract class BasePresenter<V> {
 
-    protected final V view;
+    @Inject
+    protected V view;
 
     private CompositeDisposable disposables = new CompositeDisposable();
 

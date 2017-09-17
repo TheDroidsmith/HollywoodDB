@@ -1,6 +1,5 @@
 package com.droidsmith.hollywooddb.injection.component;
 
-
 import com.droidsmith.hollywooddb.injection.module.MoviesFragmentModule;
 import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesFragment;
 
@@ -11,6 +10,5 @@ import dagger.android.AndroidInjector;
 @Subcomponent(modules = MoviesFragmentModule.class)
 public interface MoviesFragmentComponent extends AndroidInjector<MoviesFragment> {
     @Subcomponent.Builder
-    abstract class Builder extends AndroidInjector.Builder<MoviesFragment> {
-    }
+    abstract class Builder extends AndroidInjector.Builder<MoviesFragment> {}
 }

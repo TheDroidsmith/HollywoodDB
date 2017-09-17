@@ -5,12 +5,19 @@
     <string name="tmdb_api_key">83f458fcc7c923112569dd3faec43ec7</string>
 
     <!--Card Titles-->
+        <!--movies-->
     <string name="card_title_popular_movies">Popular Movies</string>
-    <string name="card_title_popular_tv">Popular TV</string>
     <string name="card_title_newest_movies">Newest Movies</string>
-    <string name="card_title_highest_rated_movies">Highest Rated</string>
+    <string name="card_title_top_rated_movies">Top Rated</string>
     <string name="card_title_upcoming_movies">Upcoming Movies</string>
-    <string name="card_title_classic_movies">Classic Movies</string>
+    <string name="card_title_now_playing_movies">Now Playing</string>
+
+        <!--tv-->
+    <string name="card_title_airing_today">On Today</string>
+    <string name="card_title_popular_tv">Popular TV</string>
+    <string name="card_title_on_the_air_tv">New Episodes</string>
+    <string name="card_title_top_rated_tv">Top Rated</string>
+
 
     <!--Bottom Navigation-->
     <string name="bot_nav_home">Home</string>
@@ -20,12 +27,9 @@
     <string name="bot_nav_history">History</string>
     <string name="main_action_search">Search</string>
     <string name="action_dummy">Dummy</string>
-    <string name="card_title_newest_tv">Newest TV</string>
-    <string name="card_title_highest_rated_tv">Highest Rated</string>
-    <string name="card_title_upcoming_tv">Upcoming TV Shows</string>
-    <string name="card_title_classic_tv">Classic TV Shows</string>
+    <string name="card_airing_today_tv">Newest TV</string>
 
     <!--Content Description-->
     <string name="content_desc_poster">Poster Image</string>
-    <string name="card_title_now_playing_movies">Now Playing</string>
+
 </resources>

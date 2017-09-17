@@ -6,6 +6,8 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMov
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
@@ -14,11 +16,10 @@ import io.reactivex.disposables.Disposable;
 
 public interface NetworkManager {
 
+    //movies
     Observable<PopularMoviesResponse> apiPopularMovies();
 
-    Observable<PopularTVResponse> apiPopularTV();
-
-    Observable<LatestMoviesResponse> apiLatestMovies();
+    Observable<LatestMoviesResponse> apiLatestMovies();//TODO: remove this
 
     Observable<TopMoviesResponse> apiTopMovies();
 
@@ -26,6 +27,13 @@ public interface NetworkManager {
 
     Observable<NowPlayingMoviesResponse> apiNowPlayingMovies();
 
+
+    //tv
     Observable<TopTVResponse> apiTopTV();
 
+    Observable<PopularTVResponse> apiPopularTV();
+
+    Observable<AiringTodayResponse> apiAiringTodayTV();
+
+    Observable<OnTheAirResponse> apiOnTheAirTV();
 }

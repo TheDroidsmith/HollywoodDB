@@ -8,6 +8,8 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMov
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
@@ -23,6 +25,9 @@ public class NetworkManagerImp implements NetworkManager{
     }
 
 
+
+
+    //movies
     @Override
     public Observable<PopularMoviesResponse> apiPopularMovies(){
         return tmdbInterface.getPopularMovies(API_KEY);
@@ -30,6 +35,7 @@ public class NetworkManagerImp implements NetworkManager{
 
     @Override
     public Observable<LatestMoviesResponse> apiLatestMovies(){
+        //TODO: remove this
         return tmdbInterface.getLatestMovies(API_KEY);
     }
 
@@ -48,9 +54,11 @@ public class NetworkManagerImp implements NetworkManager{
         return tmdbInterface.getNowPlayingMovies(API_KEY);
     }
 
+
+    //tv
     @Override
     public Observable<TopTVResponse> apiTopTV() {
-        return tmdbInterface.getTopRatedTV(API_KEY);
+        return tmdbInterface.getTopTV(API_KEY);
     }
 
     @Override
@@ -58,7 +66,16 @@ public class NetworkManagerImp implements NetworkManager{
         return tmdbInterface.getPopularTV(API_KEY);
     }
 
+    @Override
+    public Observable<AiringTodayResponse> apiAiringTodayTV() {
+        return tmdbInterface.getAiringTodayTV(API_KEY);
+    }
 
+    @Override
+    public Observable<OnTheAirResponse> apiOnTheAirTV() {
+        return tmdbInterface.getOnTheAirTV(API_KEY);
+
+    }
 
 
 }

@@ -9,6 +9,8 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMov
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
@@ -25,7 +27,7 @@ public interface TMDBInterface {
     Observable<PopularMoviesResponse> getPopularMovies(@Query("api_key") String apiKey);
 
     @GET("movie/latest")
-    Observable<LatestMoviesResponse> getLatestMovies(@Query("api_key") String apiKey);
+    Observable<LatestMoviesResponse> getLatestMovies(@Query("api_key") String apiKey);//TODO: remove this
 
     @GET("movie/upcoming")
     Observable<UpcomingMoviesResponse> getUpcomingMovies(@Query("api_key") String apiKey);
@@ -45,7 +47,13 @@ public interface TMDBInterface {
     Observable<PopularTVResponse> getPopularTV(@Query("api_key") String apiKey);
 
     @GET("tv/top_rated")
-    Observable<TopTVResponse> getTopRatedTV(@Query("api_key") String apiKey);
+    Observable<TopTVResponse> getTopTV(@Query("api_key") String apiKey);
+
+    @GET("tv/airing_today")
+    Observable<AiringTodayResponse> getAiringTodayTV(@Query("api_key") String apiKey);
+
+    @GET("tv/on_the_air")
+    Observable<OnTheAirResponse> getOnTheAirTV(@Query("api_key") String apiKey);
 
 
 

@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--top rated-->
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/highestRatedMoviesCard"
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/card_title_highest_rated_movies"
+                    android:text="@string/card_title_top_rated_movies"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     card_view:layout_constraintLeft_toLeftOf="parent"
@@ -52,6 +53,7 @@
 
         </android.support.v7.widget.CardView>
 
+        <!--upcoming-->
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/upcomingMoviesCard"
             android:layout_width="match_parent"
@@ -94,6 +96,7 @@
 
         </android.support.v7.widget.CardView>
 
+        <!--now playing-->
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/nowPlayingMoviesCard"
             android:layout_width="match_parent"
@@ -136,6 +139,7 @@
 
         </android.support.v7.widget.CardView>
 
+        <!--newest-->
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/newestMoviesCard"
             android:layout_width="match_parent"
