@@ -159,9 +159,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
                 return true;
             case R.id.dummy_item1:
                 return true;
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 

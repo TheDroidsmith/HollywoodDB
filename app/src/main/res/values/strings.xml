@@ -5,14 +5,14 @@
     <string name="tmdb_api_key">83f458fcc7c923112569dd3faec43ec7</string>
 
     <!--Card Titles-->
-        <!--movies-->
+    <!--movies-->
     <string name="card_title_popular_movies">Popular Movies</string>
     <string name="card_title_newest_movies">Newest Movies</string>
     <string name="card_title_top_rated_movies">Top Rated</string>
     <string name="card_title_upcoming_movies">Upcoming Movies</string>
     <string name="card_title_now_playing_movies">Now Playing</string>
 
-        <!--tv-->
+    <!--tv-->
     <string name="card_title_airing_today">On Today</string>
     <string name="card_title_popular_tv">Popular TV</string>
     <string name="card_title_on_the_air_tv">New Episodes</string>

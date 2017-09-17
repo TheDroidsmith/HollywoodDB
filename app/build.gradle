@@ -24,7 +24,7 @@ android {
     }
 
     packagingOptions {
-        pickFirst  'META-INF/rxjava.properties'
+        pickFirst 'META-INF/rxjava.properties'
     }
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
