@@ -5,6 +5,7 @@ package com.droidsmith.hollywooddb.data.remote.request;
 
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.MovieDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
@@ -15,12 +16,13 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface TMDBInterface {
+public interface TMDBService {
 
     //movies
     @GET("movie/popular")
@@ -39,7 +41,7 @@ public interface TMDBInterface {
     Observable<NowPlayingMoviesResponse> getNowPlayingMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{id}")
-    Call<Movie> doGetMovie(@Path("id") Integer movieID, @Query("api_key") String apiKey);
+    Single<MovieDetails> getMovieDetails(@Path("id") Integer movieID, @Query("api_key") String apiKey);
 
 
     //TV

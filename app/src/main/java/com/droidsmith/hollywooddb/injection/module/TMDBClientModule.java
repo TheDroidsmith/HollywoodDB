@@ -1,13 +1,8 @@
 package com.droidsmith.hollywooddb.injection.module;
 
-import android.app.Application;
-
-import com.droidsmith.hollywooddb.data.remote.request.TMDBInterface;
+import com.droidsmith.hollywooddb.data.remote.request.TMDBService;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
-import javax.inject.Singleton;
-
-import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -42,8 +37,8 @@ public class TMDBClientModule {
     }
 
     @Provides
-    TMDBInterface provideMovieInterface(Retrofit retrofit){
-        return retrofit.create(TMDBInterface.class);
+    TMDBService provideMovieInterface(Retrofit retrofit){
+        return retrofit.create(TMDBService.class);
     }
 
 

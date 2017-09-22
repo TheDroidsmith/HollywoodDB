@@ -1,5 +1,6 @@
 package com.droidsmith.hollywooddb.ui.main;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.droidsmith.hollywooddb.R;
+import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailActivity;
 import com.droidsmith.hollywooddb.ui.main.adapters.MainPagerAdapter;
 
 import javax.inject.Inject;
@@ -156,6 +158,8 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
             case R.id.main_action_search:
                 return true;
             case R.id.dummy_item0:
+                Intent intent = new Intent(this, MovieDetailActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.dummy_item1:
                 return true;
