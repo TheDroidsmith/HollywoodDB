@@ -1,10 +1,10 @@
 package com.droidsmith.hollywooddb.ui.detail.movie;
 
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.MovieDetails;
@@ -27,8 +27,9 @@ public class MovieDetailActivity extends AppCompatActivity
     MovieDetailContract.MovieDetailPresenter presenter;
 
 
+
     @BindView(R.id.poster)
-    ImageButton poster;
+    ImageView poster;
 
     @BindView(R.id.titleDetail)
     TextView titleDetail;
@@ -45,11 +46,11 @@ public class MovieDetailActivity extends AppCompatActivity
     @BindView(R.id.runtimeDetail)
     TextView runtimeDetail;
 
-    @BindView(R.id.releaseDetail)
-    TextView releaseDetail;
+    @BindView(R.id.dateDetail)
+    TextView dateDetail;
 
-
-
+    @BindView(R.id.overviewDetail)
+    TextView overviewDetail;
 
 
 
@@ -67,7 +68,8 @@ public class MovieDetailActivity extends AppCompatActivity
         if(movieID != 0){
             presenter.fetchBasicInfo(movieID);
         }else{
-            presenter.fetchBasicInfo(11);
+            Toast.makeText(this, "Error fetching data", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
 
@@ -77,16 +79,20 @@ public class MovieDetailActivity extends AppCompatActivity
     @Override
     public void setBasicInfo(MovieDetails movieDetails) {
 
-        Picasso.with(this)
-                .load(IMAGE_URL_BASE_PATH + movieDetails.posterPath)
-                .into(poster);
+        Picasso picasso
+                = new Picasso.Builder(this)
+                .indicatorsEnabled(true)
+                .build();
+
+        picasso.load(IMAGE_URL_BASE_PATH + movieDetails.posterPath).into(poster);
 
         titleDetail.setText(movieDetails.title);
         genreDetail.setText(movieDetails.genres.get(0).name);
         revenueDetail.setText(String.valueOf(movieDetails.revenue));
         budgetDetail.setText(String.valueOf(movieDetails.budget));
-        runtimeDetail.setText(String.valueOf(movieDetails.runtime));
-        releaseDetail.setText(movieDetails.releaseDate);
+        runtimeDetail.setText(String.valueOf(movieDetails.runtime) + "min");
+        dateDetail.setText(movieDetails.releaseDate);
+        overviewDetail.setText(movieDetails.overview);
     }
 
 

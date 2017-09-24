@@ -4,6 +4,7 @@ package com.droidsmith.hollywooddb.ui.main.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailActivity;
+import com.droidsmith.hollywooddb.ui.main.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,10 +39,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
     public MovieListAdapter(ArrayList<Movie> movieList, Context context) {
         this.movieList = movieList;
         this.context = context;
+
     }
 
-    public MovieListAdapter(Context context) {
 
+
+    public MovieListAdapter(Context context) {
         this.movieList = new ArrayList<>();
         this.context = context;
     }
@@ -79,30 +83,36 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         //@BindView(R.id.thumb_poster)
-        ImageButton poster;
+        ImageView poster;
 
         //@BindView(R.id.thumb_title)
         TextView title;
 
 
-        private ViewHolder(View movieCard) {
-            super(movieCard);
+        private ViewHolder(View view) {
+            super(view);
             //ButterKnife.bind(context, movieCard);
 
 
 
-            poster = (ImageButton) movieCard.findViewById(R.id.thumb_poster);
+            poster = (ImageView) view.findViewById(R.id.thumb_poster);
             poster.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, MovieDetailActivity.class);
                     intent.putExtra("movieID", (Integer)poster.getTag());
-                    context.startActivity(intent);
+
+                    ActivityOptionsCompat options =
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                            (MainActivity)context,(View)poster,"poster");
+
+
+                    context.startActivity(intent, options.toBundle());
                 }
             });
 
 
-            title = (TextView) movieCard.findViewById(R.id.thumb_title);
+            title = (TextView) view.findViewById(R.id.thumb_title);
         }
 
 

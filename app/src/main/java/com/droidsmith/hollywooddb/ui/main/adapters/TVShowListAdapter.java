@@ -74,12 +74,12 @@ public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.Vi
         TextView title;
 
         //@BindView(R.id.thumb_title)
-        ImageButton poster;
+        ImageView poster;
 
-        private ViewHolder(View movieCard) {
-            super(movieCard);
-            poster = (ImageButton) movieCard.findViewById(R.id.thumb_poster);
-            title = (TextView) movieCard.findViewById(R.id.thumb_title);
+        private ViewHolder(View view) {
+            super(view);
+            poster = (ImageView) view.findViewById(R.id.thumb_poster);
+            title = (TextView) view.findViewById(R.id.thumb_title);
         }
 
 

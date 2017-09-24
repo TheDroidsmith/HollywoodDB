@@ -15,6 +15,8 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
 import com.droidsmith.hollywooddb.ui.main.adapters.MovieListAdapter;
 import com.droidsmith.hollywooddb.ui.main.adapters.TVShowListAdapter;
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,6 +31,7 @@ import dagger.android.support.AndroidSupportInjection;
 public class HomeFragment extends Fragment implements HomeContract.HomeView {
 
     Unbinder unbinder;
+
 
     @BindView(R.id.popularMovieList)
     RecyclerView popularMovieRecyclerView;
@@ -75,7 +78,6 @@ public class HomeFragment extends Fragment implements HomeContract.HomeView {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.home_frag, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-
         //setup popular movie list
         LinearLayoutManager popularMovieLayoutManager = new LinearLayoutManager(getActivity());
         popularMovieLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -83,7 +85,6 @@ public class HomeFragment extends Fragment implements HomeContract.HomeView {
 
         popularMovieListAdapter = new MovieListAdapter(getActivity());
         popularMovieRecyclerView.setAdapter(popularMovieListAdapter);
-
 
         //setup popular tv list
         LinearLayoutManager popularTVLayoutManager = new LinearLayoutManager(getActivity());
@@ -95,7 +96,6 @@ public class HomeFragment extends Fragment implements HomeContract.HomeView {
 
         presenter.fetchPopularMoviesList();
         presenter.fetchPopularTVList();
-
 
         return rootView;
     }
