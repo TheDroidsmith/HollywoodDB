@@ -7,6 +7,7 @@ import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.MovieDetails;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
 import com.droidsmith.hollywooddb.ui.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -48,4 +49,25 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
                             }
                         }));
     }
+
+    @Override
+    public void fetchCast(Integer movieID) {
+        addDisposable(
+                networkManager.apiCredits(movieID)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<CreditResponse>() {
+                            @Override
+                            public void onSuccess(CreditResponse creditResponse) {
+                                view.setCastList(creditResponse.cast);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d("Error Cast","On Error Thrown");
+                            }
+                        }));
+    }
+
+
 }

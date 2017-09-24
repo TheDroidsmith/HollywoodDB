@@ -13,7 +13,7 @@ import android.view.MenuItem;
 
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailActivity;
-import com.droidsmith.hollywooddb.ui.main.adapters.MainPagerAdapter;
+import com.droidsmith.hollywooddb.ui.adapters.MainPagerAdapter;
 
 import javax.inject.Inject;
 

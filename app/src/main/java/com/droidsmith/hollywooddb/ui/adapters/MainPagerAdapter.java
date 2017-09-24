@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.ui.main.adapters;
+package com.droidsmith.hollywooddb.ui.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

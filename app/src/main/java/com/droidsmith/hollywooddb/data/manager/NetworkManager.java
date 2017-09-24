@@ -7,6 +7,7 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMov
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
@@ -30,6 +31,8 @@ public interface NetworkManager {
     Observable<NowPlayingMoviesResponse> apiNowPlayingMovies();
 
     Single<MovieDetails> apiMovieDetails(Integer movieID);
+
+    Single<CreditResponse> apiCredits(Integer movieID);
 
 
     //tv

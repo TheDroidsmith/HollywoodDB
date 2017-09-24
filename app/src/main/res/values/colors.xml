@@ -25,5 +25,6 @@
     <color name="detail_movie_bg">#042582</color>
     <color name="card_detail_basic_bg">#0f4cf8</color>
     <color name="card_detail_basic_text">#ffe082</color>
+    <color name="card_detail_cast_bg">#46dffc</color>
 
 </resources>

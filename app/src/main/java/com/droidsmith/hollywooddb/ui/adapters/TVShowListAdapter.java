@@ -1,4 +1,4 @@
-package com.droidsmith.hollywooddb.ui.main.adapters;
+package com.droidsmith.hollywooddb.ui.adapters;
 
 
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +42,7 @@ public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.Vi
 
     @Override
     public TVShowListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_thumbnail_movie,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.thumbnail_movie,parent,false);
 
         //ButterKnife.bind(context, v);
         return new TVShowListAdapter.ViewHolder(v);

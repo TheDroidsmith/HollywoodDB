@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
-import com.droidsmith.hollywooddb.ui.main.adapters.TVShowListAdapter;
+import com.droidsmith.hollywooddb.ui.adapters.TVShowListAdapter;
 
 import java.util.List;
 

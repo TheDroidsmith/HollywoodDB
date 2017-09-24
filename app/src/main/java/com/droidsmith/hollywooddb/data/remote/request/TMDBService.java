@@ -10,6 +10,7 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.NowPlayingMov
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.PopularMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.TopMoviesResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.UpcomingMoviesResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
@@ -42,6 +43,9 @@ public interface TMDBService {
 
     @GET("movie/{id}")
     Single<MovieDetails> getMovieDetails(@Path("id") Integer movieID, @Query("api_key") String apiKey);
+
+    @GET("movie/{id}/credits")
+    Single<CreditResponse> getCredits(@Path("id") Integer movieID, @Query("api_key") String apiKey);
 
 
     //TV

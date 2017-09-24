@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
-import com.droidsmith.hollywooddb.ui.main.adapters.MovieListAdapter;
+import com.droidsmith.hollywooddb.ui.adapters.MovieListAdapter;
 
 import java.util.List;
 

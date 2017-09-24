@@ -13,10 +13,8 @@ import android.view.ViewGroup;
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
-import com.droidsmith.hollywooddb.ui.main.adapters.MovieListAdapter;
-import com.droidsmith.hollywooddb.ui.main.adapters.TVShowListAdapter;
-import com.jakewharton.picasso.OkHttp3Downloader;
-import com.squareup.picasso.Picasso;
+import com.droidsmith.hollywooddb.ui.adapters.MovieListAdapter;
+import com.droidsmith.hollywooddb.ui.adapters.TVShowListAdapter;
 
 import java.util.List;
 

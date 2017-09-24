@@ -30,6 +30,7 @@
             app:layout_constraintGuide_end="16dp" />
 
 
+        <!--title-->
         <TextView
             android:id="@+id/titleDetail"
             android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent" />
 
-
+        <!--date-->
         <TextView
             android:id="@+id/dateDetail"
             android:layout_width="wrap_content"
@@ -51,7 +52,7 @@
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@id/titleDetail" />
 
-
+        <!--runtime-->
         <TextView
             android:id="@+id/runtimeDetail"
             android:layout_width="wrap_content"
@@ -61,7 +62,7 @@
             app:layout_constraintStart_toEndOf="@id/dateDetail"
             app:layout_constraintTop_toTopOf="@id/dateDetail" />
 
-
+        <!--poster-->
         <ImageView
             android:id="@+id/poster"
             android:layout_width="0dp"
@@ -72,8 +73,9 @@
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/dateDetail" />
 
+        <!--detail card-->
         <android.support.v7.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/detailCardView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="0dp"
@@ -93,6 +95,7 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp">
 
+                <!--cardTitle Detail-->
                 <TextView
                     android:id="@+id/cardTitleDetail"
                     android:layout_width="wrap_content"
@@ -105,7 +108,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="Details" />
 
-
+                <!--detail genre-->
                 <TextView
                     android:id="@+id/genre"
                     android:layout_width="wrap_content"
@@ -118,7 +121,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardTitleDetail" />
 
-
+                <!--genre content-->
                 <TextView
                     android:id="@+id/genreDetail"
                     android:layout_width="wrap_content"
@@ -130,6 +133,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/genre" />
 
+                <!--detail revenue-->
                 <TextView
                     android:id="@+id/revenue"
                     android:layout_width="wrap_content"
@@ -142,6 +146,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/genreDetail" />
 
+                <!--revenue content-->
                 <TextView
                     android:id="@+id/revenueDetail"
                     android:layout_width="wrap_content"
@@ -153,6 +158,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/revenue" />
 
+                <!--detail budget-->
                 <TextView
                     android:id="@+id/budget"
                     android:layout_width="wrap_content"
@@ -165,6 +171,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/revenueDetail" />
 
+                <!--budget content-->
                 <TextView
                     android:id="@+id/budgetDetail"
                     android:layout_width="wrap_content"
@@ -176,10 +183,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/budget" />
 
+
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
+        <!--favorites heart border-->
         <ImageButton
             android:id="@+id/favoriteBorder"
             android:layout_width="wrap_content"
@@ -187,11 +196,13 @@
             android:layout_marginBottom="8dp"
             android:background="@color/transparent"
             android:contentDescription="@string/content_desc_poster"
-            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintBottom_toTopOf="@+id/detailCardView"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:srcCompat="@drawable/ic_favorite_outline" />
 
+        <!--overview card-->
         <android.support.v7.widget.CardView
+            android:id="@+id/overviewCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="0dp"
@@ -238,6 +249,57 @@
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/castCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/card_detail_cast_bg"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/overviewCard"
+            tools:layout_editor_absoluteX="172dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/castTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/card_title_detail_cast"
+                    android:textColor="@color/card_detail_basic_text"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/castList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/castTitle">
+
+
+                </android.support.v7.widget.RecyclerView>
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
 
 
     </android.support.constraint.ConstraintLayout>

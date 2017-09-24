@@ -39,6 +39,7 @@
 
     <!--Content Description-->
     <string name="content_desc_poster">Poster Image</string>
+    <string name="card_title_detail_cast">Cast</string>
 
 
 </resources>
