@@ -20,6 +20,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.ViewHolder> {
 
 
@@ -56,12 +60,13 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
     @Override
     public void onBindViewHolder(MovieListAdapter.ViewHolder holder, int position) {
 
-        holder.getPoster().setTag(movieList.get(position).id);
+        holder.getPoster().setTag(movieList.get(position).posterPath);
 
         Picasso.with(context)
                 .load(IMAGE_URL_BASE_PATH + movieList.get(position).posterPath)
                 .into(holder.getPoster());
 
+        holder.getTitle().setTag(movieList.get(position).id);
         holder.getTitle().setText(movieList.get(position).title);
 
     }
@@ -75,37 +80,30 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        //@BindView(R.id.thumb_poster)
+        @BindView(R.id.thumb_poster)
         ImageView poster;
 
-        //@BindView(R.id.thumb_title)
+        @OnClick(R.id.thumb_poster)
+        void startDetailActivity(ImageView poster){
+            Intent intent = new Intent(context, MovieDetailActivity.class);
+            intent.putExtra("posterPath", (String)poster.getTag());
+            intent.putExtra("movieID", (Integer)title.getTag());
+
+            ActivityOptionsCompat options =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            (MainActivity)context,(View)poster,"poster");
+
+            context.startActivity(intent, options.toBundle());
+        }
+
+
+        @BindView(R.id.thumb_title)
         TextView title;
 
 
         private ViewHolder(View view) {
             super(view);
-            //ButterKnife.bind(context, movieCard);
-
-
-
-            poster = (ImageView) view.findViewById(R.id.thumb_poster);
-            poster.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, MovieDetailActivity.class);
-                    intent.putExtra("movieID", (Integer)poster.getTag());
-
-                    ActivityOptionsCompat options =
-                            ActivityOptionsCompat.makeSceneTransitionAnimation(
-                                            (MainActivity)context,(View)poster,"poster");
-
-
-                    context.startActivity(intent, options.toBundle());
-                }
-            });
-
-
-            title = (TextView) view.findViewById(R.id.thumb_title);
+            ButterKnife.bind(this, view);
         }
 
 

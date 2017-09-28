@@ -8,13 +8,14 @@
 
     <ImageView
         android:id="@+id/thumb_poster"
-        android:layout_gravity="center_horizontal"
         android:layout_width="112.5dp"
         android:layout_height="168.75dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
-        android:transitionName="poster"
+        android:layout_marginStart="0dp"
         android:background="@color/transparent"
-        android:contentDescription="@string/content_desc_poster" />
+        android:contentDescription="@string/content_desc_poster"
+        android:transitionName="poster" />
 
 
     <TextView

@@ -4,4 +4,6 @@
     <dimen name="card_elevation_1">3dp</dimen>
     <dimen name="card_elevation_2">2dp</dimen>
     <dimen name="card_elevation_3">1dp</dimen>
+    <dimen name="card_detail_title_size">18sp</dimen>
+    <dimen name="card_detail_text_size">14sp</dimen>
 </resources>

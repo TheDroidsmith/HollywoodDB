@@ -4,13 +4,15 @@
     <!--My want to hide this-->
     <string name="tmdb_api_key">83f458fcc7c923112569dd3faec43ec7</string>
 
+    <!--detail activity-->
     <string name="detail_original">Original Title:</string>
     <string name="detail_genre">Genre:</string>
     <string name="detail_revenue">Revenue:</string>
     <string name="detail_budget">Budget:</string>
     <string name="detail_status">Status:</string>
-
-    <string name="detail_overview">Overview</string>
+    <string name="detail_card_cast">Cast</string>
+    <string name="detail_card_details">Details</string>
+    <string name="detail_card_overview">Overview</string>
 
     <!--Card Titles-->
     <!--movies-->
@@ -39,7 +41,7 @@
 
     <!--Content Description-->
     <string name="content_desc_poster">Poster Image</string>
-    <string name="card_title_detail_cast">Cast</string>
+
 
 
 </resources>

@@ -68,5 +68,7 @@ dependencies {
     compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
+    compile 'com.airbnb.android:lottie:2.2.5'
+
     testCompile 'junit:junit:4.12'
 }

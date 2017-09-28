@@ -29,7 +29,6 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-
         <!--title-->
         <TextView
             android:id="@+id/titleDetail"
@@ -101,12 +100,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/detail_card_details"
                     android:textColor="@color/card_detail_basic_text"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/card_detail_title_size"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="Details" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <!--detail genre-->
                 <TextView
@@ -114,10 +113,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/detail_genre"
                     android:textColor="@color/card_detail_basic_text"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/card_detail_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardTitleDetail" />
 
@@ -129,7 +128,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/card_detail_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/genre" />
 
@@ -142,7 +141,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/detail_revenue"
                     android:textColor="@color/card_detail_basic_text"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/card_detail_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/genreDetail" />
 
@@ -154,7 +153,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/card_detail_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/revenue" />
 
@@ -167,7 +166,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/detail_budget"
                     android:textColor="@color/card_detail_basic_text"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/card_detail_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/revenueDetail" />
 
@@ -179,7 +178,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/card_detail_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/budget" />
 
@@ -189,16 +188,25 @@
         </android.support.v7.widget.CardView>
 
         <!--favorites heart border-->
-        <ImageButton
-            android:id="@+id/favoriteBorder"
+        <!--<ImageButton-->
+            <!--android:id="@+id/favoriteBorder"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:background="@color/transparent"-->
+            <!--android:contentDescription="@string/content_desc_poster"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/detailCardView"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/rightGuideline"-->
+            <!--app:srcCompat="@drawable/ic_favorite_outline" />-->
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/fav_anim_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:background="@color/transparent"
             android:contentDescription="@string/content_desc_poster"
             app:layout_constraintBottom_toTopOf="@+id/detailCardView"
-            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-            app:srcCompat="@drawable/ic_favorite_outline" />
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline" />
 
         <!--overview card-->
         <android.support.v7.widget.CardView
@@ -225,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="@string/detail_overview"
+                    android:text="@string/detail_card_overview"
                     android:textColor="@color/card_detail_basic_text"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -250,7 +258,7 @@
 
         </android.support.v7.widget.CardView>
 
-
+        <!--cast list-->
         <android.support.v7.widget.CardView
             android:id="@+id/castCard"
             android:layout_width="0dp"
@@ -267,8 +275,10 @@
             tools:layout_editor_absoluteX="172dp">
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
 
                 <TextView
                     android:id="@+id/castTitle"
@@ -276,7 +286,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/card_title_detail_cast"
+                    android:text="@string/detail_card_cast"
                     android:textColor="@color/card_detail_basic_text"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -286,8 +296,11 @@
                     android:id="@+id/castList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/castTitle">
 
