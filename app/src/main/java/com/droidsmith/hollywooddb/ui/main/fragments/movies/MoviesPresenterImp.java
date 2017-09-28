@@ -32,8 +32,6 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
 
     @Override
     public void fetchLatestMoviesList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiLatestMovies()
                         .subscribeOn(Schedulers.io())
@@ -48,11 +46,11 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Latest Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("On TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Latest Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("On TV Success", "Success!!");
                             }
                         }));
 
@@ -60,8 +58,6 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
 
     @Override
     public void fetchTopRatedMoviesList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiTopMovies()
                         .subscribeOn(Schedulers.io())
@@ -70,25 +66,20 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
                             @Override
                             public void onNext(TopMoviesResponse topMoviesResponse) {
                                 view.updateTopRatedMoviesList(topMoviesResponse.results);
-                                for (Movie movie : topMoviesResponse.results) {
-                                    Log.d("Top Movies ---->", "Movie ---- " + movie.title);
-                                }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Top Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("On TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Top Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("On TV Success", "Success!!");
                             }
                         }));
     }
 
     @Override
     public void fetchUpcomingMoviesList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiUpcomingMovies()
                         .subscribeOn(Schedulers.io())
@@ -97,17 +88,14 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
                             @Override
                             public void onNext(UpcomingMoviesResponse upcomingMoviesResponse) {
                                 view.updateUpcomingMoviesList(upcomingMoviesResponse.results);
-                                for (Movie movie : upcomingMoviesResponse.results) {
-                                    Log.d("Upcoming Movies ---->", "Movie ---- " + movie.title);
-                                }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Upcoming OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("On TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Upcoming Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("On TV Success", "Success!!");
                             }
                         }));
 
@@ -115,8 +103,6 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
 
     @Override
     public void fetchNowPlayingMoviesList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiNowPlayingMovies()
                         .subscribeOn(Schedulers.io())
@@ -125,17 +111,14 @@ public class MoviesPresenterImp extends BasePresenter<MoviesContract.MoviesView>
                             @Override
                             public void onNext(NowPlayingMoviesResponse nowPlayingMoviesResponse) {
                                 view.updateNowPlayingMoviesList(nowPlayingMoviesResponse.results);
-                                for (Movie movie : nowPlayingMoviesResponse.results) {
-                                    Log.d("NowPlaying Movies ---->", "Movie ---- " + movie.title);
-                                }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Now Playing OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("On TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Now Playing Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("On TV Success", "Success!!");
                             }
                         }));
     }

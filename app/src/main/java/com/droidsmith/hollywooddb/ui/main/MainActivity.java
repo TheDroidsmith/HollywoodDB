@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.droidsmith.hollywooddb.R;
+import com.droidsmith.hollywooddb.ui.common.NoSwipeViewPager;
 import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailActivity;
 import com.droidsmith.hollywooddb.ui.adapters.MainPagerAdapter;
 
@@ -25,7 +26,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
-//TODO: Fix the page swipe issue
+
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector, MainView {
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     Unbinder unbinder;
 
     @BindView(R.id.main_viewpager)
-    ViewPager mainViewpager;
+    NoSwipeViewPager mainViewpager;
 
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
@@ -108,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     @Override
     public void setupViewPager(){
 
+
+
         final ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -130,13 +133,10 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         };
 
         mainViewpager.addOnPageChangeListener(pageChangeListener);
+        mainViewpager.setSwipeEnabled(false);
 
-        mainViewpager.post(new Runnable(){
-            @Override
-            public void run() {
-                pageChangeListener.onPageSelected(mainViewpager.getCurrentItem());
-            }
-        });
+        mainViewpager.post( () ->
+                pageChangeListener.onPageSelected(mainViewpager.getCurrentItem()));
     }
 
 

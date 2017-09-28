@@ -31,11 +31,8 @@ public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeVie
     }
 
 
-
     @Override
     public void fetchPopularMoviesList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiPopularMovies()
                 .subscribeOn(Schedulers.io())
@@ -44,18 +41,14 @@ public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeVie
                     @Override
                     public void onNext(PopularMoviesResponse PopularMoviesResponse) {
                         view.updatePopularMovieList(PopularMoviesResponse.results);
-                        for (Movie movie : PopularMoviesResponse.results) {
-                            Log.d("Popular Movies ---->", "Movie ---- " + movie.title);
-                        }
                     }
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("Pop Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                        //Log.d("On TV OnError", "ERROR!!");
                     }
-
                     @Override
                     public void onComplete() {
-                        Log.d("Pop Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                        //Log.d("On TV Success", "Success!!");
                     }
                 }));
 
@@ -63,8 +56,6 @@ public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeVie
 
     @Override
     public void fetchPopularTVList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiPopularTV()
                         .subscribeOn(Schedulers.io())
@@ -73,19 +64,14 @@ public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeVie
                             @Override
                             public void onNext(PopularTVResponse popularTVResponse) {
                                 view.updatePopularTVList(popularTVResponse.results);
-                                for (TVShow show : popularTVResponse.results) {
-                                    Log.d("Popular Show ---->", "Show ---- " + show.name);
-                                }
                             }
-
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Pop TV OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("On TV OnError", "ERROR!!");
                             }
-
                             @Override
                             public void onComplete() {
-                                Log.d("PopTV Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("On TV Success", "Success!!");
                             }
                         }));
     }

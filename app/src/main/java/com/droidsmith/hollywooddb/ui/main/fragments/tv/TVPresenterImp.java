@@ -34,8 +34,6 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
 
     @Override
     public void fetchAiringTodayList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiAiringTodayTV()
                         .subscribeOn(Schedulers.io())
@@ -44,25 +42,20 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
                             @Override
                             public void onNext(AiringTodayResponse airingTodayResponse) {
                                 view.updateAiringTodayList(airingTodayResponse.results);
-                                for (TVShow show: airingTodayResponse.results) {
-                                    Log.d("Airing Today -->", "Show -- " + show.name);
-                                }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Latest Movie OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("Latest Movie OnError", "Error");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Latest Movie Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("Latest Movie Success", "Success!!!!");
                             }
                         }));
     }
 
     @Override
     public void fetchPopularTVList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiPopularTV()
                         .subscribeOn(Schedulers.io())
@@ -71,25 +64,20 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
                             @Override
                             public void onNext(PopularTVResponse popularTVResponse) {
                                 view.updatePopularTVList(popularTVResponse.results);
-                                for (TVShow show: popularTVResponse.results) {
-                                    Log.d("Popular TV -->", "Show -- " + show.name);
-                                }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Popular TV OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("Popular TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Popular TV Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("Popular TV Success", "Success!!");
                             }
                         }));
     }
 
     @Override
     public void fetchOnTheAirList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiOnTheAirTV()
                         .subscribeOn(Schedulers.io())
@@ -98,25 +86,20 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
                             @Override
                             public void onNext(OnTheAirResponse onTheAirResponse) {
                                 view.updateOnTheAirList(onTheAirResponse.results);
-                                for (TVShow show: onTheAirResponse.results) {
-                                    Log.d("On TV -->", "Show -- " + show.name);
-                                }
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("On TV OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("On TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("On TV Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("On TV Success", "Success!!");
                             }
                         }));
     }
 
     @Override
     public void fetchTopRatedList() {
-        //make a facade class so this can be tested for schedulers.
-        //But, don't forget to check trampoline.
         addDisposable(
                 networkManager.apiTopTV()
                         .subscribeOn(Schedulers.io())
@@ -131,11 +114,11 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
                             }
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Top TV OnError", "!!!!!!!!!ERROR!!!!!!!!!!");
+                                //Log.d("Top TV OnError", "ERROR!!");
                             }
                             @Override
                             public void onComplete() {
-                                Log.d("Top TV Success", "!!!!!!!!!YAYYYYYY!!!!!!!!!!");
+                                //Log.d("Top TV Success", "Success!!");
                             }
                         }));
     }
