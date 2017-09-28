@@ -49,7 +49,7 @@ public class MovieDetails {
     public String releaseDate;
     @SerializedName("revenue")
     @Expose
-    public Integer revenue;
+    public Long  revenue;
     @SerializedName("runtime")
     @Expose
     public Integer runtime;
