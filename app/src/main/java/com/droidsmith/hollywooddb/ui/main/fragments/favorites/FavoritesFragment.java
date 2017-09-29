@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class FavoritesFragment extends Fragment implements FavoritesFragmentView {
+public class FavoritesFragment extends Fragment implements FavoritesContract.FavoritesView{
 
 
 
