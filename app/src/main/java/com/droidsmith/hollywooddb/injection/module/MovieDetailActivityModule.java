@@ -15,7 +15,7 @@ import dagger.Provides;
 public class MovieDetailActivityModule {
 
     @Provides
-    MovieDetailContract.MovieDetailView provideMainView(MovieDetailActivity movieDetailActivity){
+    MovieDetailContract.MovieDetailView provideMovieDetailView(MovieDetailActivity movieDetailActivity){
         return movieDetailActivity;
     }
 
@@ -25,8 +25,7 @@ public class MovieDetailActivityModule {
     }
 
     @Provides
-    MovieDetailContract.MovieDetailPresenter provideMovieDetailPresenter(MovieDetailContract.MovieDetailView movieDetailView,
-                                                                         NetworkManager networkManager){
+    MovieDetailContract.MovieDetailPresenter provideMovieDetailPresenter(MovieDetailContract.MovieDetailView movieDetailView, NetworkManager networkManager){
         return new MovieDetailPresenterImpl(movieDetailView,networkManager);
     }
 

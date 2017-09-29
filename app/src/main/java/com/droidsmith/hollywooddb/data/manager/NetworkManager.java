@@ -11,6 +11,7 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditRespons
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShowDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
 import io.reactivex.Observable;
@@ -32,7 +33,7 @@ public interface NetworkManager {
 
     Single<MovieDetails> apiMovieDetails(Integer movieID);
 
-    Single<CreditResponse> apiCredits(Integer movieID);
+    Single<CreditResponse> apiMovieCredits(Integer movieID);
 
 
     //tv
@@ -43,4 +44,9 @@ public interface NetworkManager {
     Observable<AiringTodayResponse> apiAiringTodayTV();
 
     Observable<OnTheAirResponse> apiOnTheAirTV();
+
+    Single<TVShowDetails> apiTVShowDetails(Integer tvID);
+
+    Single<CreditResponse> apiTVCredits(Integer movieID);
+
 }

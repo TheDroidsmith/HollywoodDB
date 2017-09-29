@@ -13,6 +13,7 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditRespons
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShowDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
 import io.reactivex.Observable;
@@ -63,8 +64,8 @@ public class NetworkManagerImp implements NetworkManager{
     }
 
     @Override
-    public Single<CreditResponse> apiCredits(Integer movieID) {
-        return tmdbService.getCredits(movieID, API_KEY);
+    public Single<CreditResponse> apiMovieCredits(Integer movieID) {
+        return tmdbService.getMovieCredits(movieID, API_KEY);
     }
 
 
@@ -88,6 +89,16 @@ public class NetworkManagerImp implements NetworkManager{
     public Observable<OnTheAirResponse> apiOnTheAirTV() {
         return tmdbService.getOnTheAirTV(API_KEY);
 
+    }
+
+    @Override
+    public Single<TVShowDetails> apiTVShowDetails(Integer tvID) {
+        return tmdbService.getTVShowDetails(tvID, API_KEY);
+    }
+
+    @Override
+    public Single<CreditResponse> apiTVCredits(Integer tvID) {
+        return tmdbService.getTVCredits(tvID, API_KEY);
     }
 
 

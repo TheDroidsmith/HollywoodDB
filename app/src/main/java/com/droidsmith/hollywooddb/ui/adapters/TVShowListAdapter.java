@@ -2,6 +2,8 @@ package com.droidsmith.hollywooddb.ui.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,16 @@ import android.widget.TextView;
 
 import com.droidsmith.hollywooddb.R;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
+import com.droidsmith.hollywooddb.ui.detail.tv.TVDetailActivity;
+import com.droidsmith.hollywooddb.ui.main.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.ViewHolder>  {
 
@@ -35,6 +43,7 @@ public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.Vi
         this.context = context;
     }
 
+
     public void setResults(List<TVShow> results){
         this.TVList = results;
         notifyDataSetChanged();
@@ -44,17 +53,19 @@ public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.Vi
     public TVShowListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.thumbnail_movie,parent,false);
 
-        //ButterKnife.bind(context, v);
         return new TVShowListAdapter.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(TVShowListAdapter.ViewHolder holder, int position) {
 
+        holder.getPoster().setTag(TVList.get(position).posterPath);
+
         Picasso.with(context)
                 .load(IMAGE_URL_BASE_PATH + TVList.get(position).posterPath)
                 .into(holder.getPoster());
 
+        holder.getTitle().setTag(TVList.get(position).id);
         holder.getTitle().setText(TVList.get(position).name);
 
     }
@@ -68,22 +79,34 @@ public class TVShowListAdapter extends RecyclerView.Adapter<TVShowListAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
-        //@BindView(R.id.thumb_poster)
-        TextView title;
-
-        //@BindView(R.id.thumb_title)
+        @BindView(R.id.thumb_poster)
         ImageView poster;
+
+        @OnClick(R.id.thumb_poster)
+        void startDetailActivity(ImageView poster){
+            Intent intent = new Intent(context, TVDetailActivity.class);
+            intent.putExtra("posterPath", (String)poster.getTag());
+            intent.putExtra("tvID", (Integer)name.getTag());
+
+            ActivityOptionsCompat options =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            (MainActivity)context,(View)poster,"poster");
+
+            context.startActivity(intent, options.toBundle());
+        }
+
+
+        @BindView(R.id.thumb_title)
+        TextView name;
 
         private ViewHolder(View view) {
             super(view);
-            poster = (ImageView) view.findViewById(R.id.thumb_poster);
-            title = (TextView) view.findViewById(R.id.thumb_title);
+            ButterKnife.bind(this, view);
         }
 
 
         public TextView getTitle() {
-            return title;
+            return name;
         }
 
         public ImageView getPoster() {

@@ -8,6 +8,7 @@
     android:layout_height="wrap_content">
 
 
+    <!--TODO: finish changing this for tv shows-->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,9 +30,9 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <!--title-->
+        <!--name-->
         <TextView
-            android:id="@+id/titleDetail"
+            android:id="@+id/nameDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -41,25 +42,17 @@
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--date-->
+        <!--air date-->
         <TextView
-            android:id="@+id/dateDetail"
+            android:id="@+id/airDateDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="@color/card_bg_color_tv_orange_0"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@id/titleDetail" />
+            app:layout_constraintTop_toBottomOf="@id/nameDetail" />
 
-        <!--runtime-->
-        <TextView
-            android:id="@+id/runtimeDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/card_bg_color_tv_orange_0"
-            app:layout_constraintStart_toEndOf="@id/dateDetail"
-            app:layout_constraintTop_toTopOf="@id/dateDetail" />
+
 
         <!--poster-->
         <ImageView
@@ -70,7 +63,7 @@
             android:transitionName="poster"
             app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/dateDetail" />
+            app:layout_constraintTop_toBottomOf="@+id/airDateDetail" />
 
         <!--detail card-->
         <android.support.v7.widget.CardView
@@ -132,55 +125,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/genre" />
 
-                <!--detail revenue-->
-                <TextView
-                    android:id="@+id/revenue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/detail_revenue"
-                    android:textColor="@color/card_detail_basic_text"
-                    android:textSize="@dimen/card_detail_text_size"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/genreDetail" />
 
-                <!--revenue content-->
-                <TextView
-                    android:id="@+id/revenueDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/card_detail_text_size"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/revenue" />
-
-                <!--detail budget-->
-                <TextView
-                    android:id="@+id/budget"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/detail_budget"
-                    android:textColor="@color/card_detail_basic_text"
-                    android:textSize="@dimen/card_detail_text_size"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/revenueDetail" />
-
-                <!--budget content-->
-                <TextView
-                    android:id="@+id/budgetDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/card_detail_text_size"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/budget" />
 
 
             </android.support.constraint.ConstraintLayout>

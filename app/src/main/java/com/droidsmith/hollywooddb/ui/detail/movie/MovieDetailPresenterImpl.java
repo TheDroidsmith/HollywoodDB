@@ -4,8 +4,6 @@ package com.droidsmith.hollywooddb.ui.detail.movie;
 import android.util.Log;
 
 import com.droidsmith.hollywooddb.data.manager.NetworkManager;
-import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.LatestMoviesResponse;
-import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.Movie;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.MovieDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
 import com.droidsmith.hollywooddb.ui.base.BasePresenter;
@@ -13,7 +11,6 @@ import com.droidsmith.hollywooddb.ui.base.BasePresenter;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -24,7 +21,8 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
     public NetworkManager networkManager;
 
     @Inject
-    public MovieDetailPresenterImpl(MovieDetailContract.MovieDetailView view, NetworkManager networkManager) {
+    public MovieDetailPresenterImpl(MovieDetailContract.MovieDetailView view,
+                                    NetworkManager networkManager) {
         super(view);
         this.networkManager = networkManager;
 
@@ -53,7 +51,7 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
     @Override
     public void fetchCast(Integer movieID) {
         addDisposable(
-                networkManager.apiCredits(movieID)
+                networkManager.apiMovieCredits(movieID)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<CreditResponse>() {
@@ -67,6 +65,7 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
                                 Log.d("Error Cast","On Error Thrown");
                             }
                         }));
+
     }
 
 

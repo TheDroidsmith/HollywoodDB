@@ -14,6 +14,7 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditRespons
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.AiringTodayResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.OnTheAirResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse;
+import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShowDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 
 import io.reactivex.Observable;
@@ -45,7 +46,7 @@ public interface TMDBService {
     Single<MovieDetails> getMovieDetails(@Path("id") Integer movieID, @Query("api_key") String apiKey);
 
     @GET("movie/{id}/credits")
-    Single<CreditResponse> getCredits(@Path("id") Integer movieID, @Query("api_key") String apiKey);
+    Single<CreditResponse> getMovieCredits(@Path("id") Integer movieID, @Query("api_key") String apiKey);
 
 
     //TV
@@ -61,6 +62,11 @@ public interface TMDBService {
     @GET("tv/on_the_air")
     Observable<OnTheAirResponse> getOnTheAirTV(@Query("api_key") String apiKey);
 
+    @GET("tv/{id}")
+    Single<TVShowDetails> getTVShowDetails(@Path("id") Integer tvID, @Query("api_key") String apiKey);
+
+    @GET("tv/{id}/credits")
+    Single<CreditResponse> getTVCredits(@Path("id") Integer tvID, @Query("api_key") String apiKey);
 
 
 }
