@@ -118,7 +118,7 @@ public class MovieDetailActivity extends AppCompatActivity
 
         if (favAnimationView.getProgress() == 0f) {
             animator.start();
-            //TODO: presenter save item to favorites
+            presenter.saveToFavorites();
         } else {
             favAnimationView.setProgress(0f);
             //TODO: presenter remove item from favorites
@@ -142,6 +142,11 @@ public class MovieDetailActivity extends AppCompatActivity
     @Override
     public void setCastList(List<Cast> results) {
         castListAdapter.setResults(results);
+    }
+
+    @Override
+    public void onSuccessfulSave() {
+        Toast.makeText(this,"Saved to Favorites", Toast.LENGTH_SHORT).show();
     }
 
 

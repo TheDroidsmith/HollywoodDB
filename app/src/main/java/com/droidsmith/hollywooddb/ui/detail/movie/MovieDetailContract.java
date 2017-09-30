@@ -11,11 +11,13 @@ public interface MovieDetailContract {
     interface MovieDetailView{
         void setBasicInfo(MovieDetails movieDetails);
         void setCastList(List<Cast> cast);
+        void onSuccessfulSave();
     }
 
     interface MovieDetailPresenter{
         void fetchBasicInfo(Integer movieID);
         void fetchCast(Integer movieID);
+        void saveToFavorites();
     }
 
 }

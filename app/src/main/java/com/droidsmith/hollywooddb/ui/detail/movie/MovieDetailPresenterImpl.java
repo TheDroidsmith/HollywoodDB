@@ -3,6 +3,7 @@ package com.droidsmith.hollywooddb.ui.detail.movie;
 
 import android.util.Log;
 
+import com.droidsmith.hollywooddb.data.manager.DiskManager;
 import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.MovieDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
@@ -17,14 +18,20 @@ import io.reactivex.schedulers.Schedulers;
 public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.MovieDetailView>
         implements MovieDetailContract.MovieDetailPresenter {
 
+    private MovieDetails details;
+
     @Inject
     public NetworkManager networkManager;
 
     @Inject
+    DiskManager diskManager;
+
+    @Inject
     public MovieDetailPresenterImpl(MovieDetailContract.MovieDetailView view,
-                                    NetworkManager networkManager) {
+                                    NetworkManager networkManager, DiskManager diskManager) {
         super(view);
         this.networkManager = networkManager;
+        this.diskManager = diskManager;
 
     }
 
@@ -38,6 +45,7 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
                         .subscribeWith(new DisposableSingleObserver<MovieDetails>() {
                             @Override
                             public void onSuccess(MovieDetails movieDetails) {
+                                details = movieDetails;
                                 view.setBasicInfo(movieDetails);
                             }
 
@@ -67,6 +75,13 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
                         }));
 
     }
+
+    @Override
+    public void saveToFavorites() {
+        diskManager.saveToRealm(details);
+        view.onSuccessfulSave();
+    }
+
 
 
 }

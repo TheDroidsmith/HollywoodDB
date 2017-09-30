@@ -25,7 +25,8 @@ public class HomeFragmentPresenterImp extends BasePresenter<HomeContract.HomeVie
     public NetworkManager networkManager;
 
     @Inject
-    public HomeFragmentPresenterImp(HomeContract.HomeView view, NetworkManager networkManager) {
+    public HomeFragmentPresenterImp(HomeContract.HomeView view,
+                                    NetworkManager networkManager) {
         super(view);
         this.networkManager = networkManager;
     }

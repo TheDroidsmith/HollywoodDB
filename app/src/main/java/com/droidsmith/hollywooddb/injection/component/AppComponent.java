@@ -7,19 +7,20 @@ import com.droidsmith.hollywooddb.App;
 import com.droidsmith.hollywooddb.injection.module.ActivityModule;
 import com.droidsmith.hollywooddb.injection.module.AppModule;
 import com.droidsmith.hollywooddb.injection.module.FragmentModule;
+import com.droidsmith.hollywooddb.injection.module.RealmManagerModule;
 import com.droidsmith.hollywooddb.injection.module.TMDBClientModule;
 
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
-import dagger.android.support.AndroidSupportInjectionModule;
 
 @Component(modules = {
         AndroidInjectionModule.class,
         AppModule.class,
         ActivityModule.class,
         FragmentModule.class,
-        TMDBClientModule.class})
+        TMDBClientModule.class,
+        RealmManagerModule.class})
 public interface AppComponent {
 
     @Component.Builder

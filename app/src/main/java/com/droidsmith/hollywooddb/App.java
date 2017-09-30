@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
+import io.realm.Realm;
 
 public class App extends Application implements HasActivityInjector {
 
@@ -21,6 +22,8 @@ public class App extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Realm.init(this);
 
         DaggerAppComponent
                 .builder()

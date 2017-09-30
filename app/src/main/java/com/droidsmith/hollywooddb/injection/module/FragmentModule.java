@@ -2,9 +2,11 @@ package com.droidsmith.hollywooddb.injection.module;
 
 import android.support.v4.app.Fragment;
 
+import com.droidsmith.hollywooddb.injection.component.FavoritesFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.HomeFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.MoviesFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.TVFragmentComponent;
+import com.droidsmith.hollywooddb.ui.main.fragments.favorites.FavoritesFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.tv.TVFragment;
@@ -33,6 +35,11 @@ public abstract class FragmentModule {
     @IntoMap
     @FragmentKey(TVFragment.class)
     abstract AndroidInjector.Factory<? extends Fragment> provideTVFragmentFactory(TVFragmentComponent.Builder builder);
+
+    @Binds
+    @IntoMap
+    @FragmentKey(FavoritesFragment.class)
+    abstract AndroidInjector.Factory<? extends Fragment> provideFavoritesFragmentFactory(FavoritesFragmentComponent.Builder builder);
 
 
 }

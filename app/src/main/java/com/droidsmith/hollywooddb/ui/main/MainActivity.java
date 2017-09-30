@@ -109,8 +109,6 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     @Override
     public void setupViewPager(){
 
-
-
         final ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

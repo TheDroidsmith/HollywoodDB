@@ -1,6 +1,8 @@
 package com.droidsmith.hollywooddb.injection.module;
 
 
+import com.droidsmith.hollywooddb.data.manager.DiskManager;
+import com.droidsmith.hollywooddb.data.manager.DiskManagerImp;
 import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.manager.NetworkManagerImp;
 import com.droidsmith.hollywooddb.data.remote.request.TMDBService;
@@ -10,6 +12,7 @@ import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailPresenterImpl;
 
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
 @Module
 public class MovieDetailActivityModule {
@@ -25,8 +28,17 @@ public class MovieDetailActivityModule {
     }
 
     @Provides
-    MovieDetailContract.MovieDetailPresenter provideMovieDetailPresenter(MovieDetailContract.MovieDetailView movieDetailView, NetworkManager networkManager){
-        return new MovieDetailPresenterImpl(movieDetailView,networkManager);
+    DiskManager provideDiskManager(Realm realm){
+        return new DiskManagerImp(realm);
+    }
+
+    @Provides
+    MovieDetailContract.MovieDetailPresenter provideMovieDetailPresenter(
+            MovieDetailContract.MovieDetailView movieDetailView,
+            NetworkManager networkManager,
+            DiskManager diskManager){
+
+        return new MovieDetailPresenterImpl(movieDetailView,networkManager, diskManager);
     }
 
 }
