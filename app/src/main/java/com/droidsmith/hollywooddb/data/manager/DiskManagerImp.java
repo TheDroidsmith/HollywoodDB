@@ -26,15 +26,8 @@ public class DiskManagerImp implements DiskManager {
 
     @Override
     public RealmResults<Favorite> getAllFavorites() {
-        RealmResults<Favorite> results;
-        try{
-            results = realm.where(Favorite.class).findAllSortedAsync("name");
-        } finally {
-
-        }
-        //TODO: just use observable for this
-        return results;
-
+        //RealmResults<Favorite> results;
+        return realm.where(Favorite.class).findAllSortedAsync("name");
 
     }
 
@@ -48,7 +41,7 @@ public class DiskManagerImp implements DiskManager {
             }, new Realm.Transaction.OnSuccess() {
                 @Override
                 public void onSuccess() {
-                    realm.close();
+
                 }
             }, new Realm.Transaction.OnError() {
                 @Override

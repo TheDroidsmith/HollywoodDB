@@ -63,15 +63,12 @@ public class TVFragment extends Fragment implements TVContract.TVView{
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tv_frag, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-
         setupAiringToday();
         setupOnTheAir();
         setupPopular();
         setupTopRated();
 
-
         fetchData();
-
 
         return rootView;
     }
@@ -113,16 +110,12 @@ public class TVFragment extends Fragment implements TVContract.TVView{
         topRatedRecyclerView.setAdapter(topRatedAdapter);
     }
 
-
     private void fetchData() {
         presenter.fetchAiringTodayList();
         presenter.fetchOnTheAirList();
         presenter.fetchPopularTVList();
         presenter.fetchTopRatedList();
     }
-
-
-
 
 
     @Override

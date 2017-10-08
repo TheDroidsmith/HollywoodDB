@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
+    android:focusable="true"
+    android:background="@color/card_bg_color_movies_blue_1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -15,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="2:3"
-        app:srcCompat="@mipmap/ic_launcher"
         android:contentDescription="@string/content_desc_poster"/>
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="@dimen/card_detail_title_size"
+        android:textColor="@color/card_detail_basic_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/favPoster"

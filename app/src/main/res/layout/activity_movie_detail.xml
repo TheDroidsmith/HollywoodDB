@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ellipsize="end"
-            android:textColor="@color/card_bg_color_tv_orange_0"
+            android:textColor="@color/card_detail_basic_text"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="@color/card_bg_color_tv_orange_0"
+            android:textColor="@color/card_detail_subtle_text"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@id/titleDetail" />
 
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/card_bg_color_tv_orange_0"
+            android:textColor="@color/card_detail_subtle_text"
             app:layout_constraintStart_toEndOf="@id/dateDetail"
             app:layout_constraintTop_toTopOf="@id/dateDetail" />
 
@@ -187,7 +187,7 @@
 
         </android.support.v7.widget.CardView>
 
-        <!--favorites heart border-->
+        <!--favorites star icon-->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/fav_anim_view"
             android:layout_width="wrap_content"
@@ -247,7 +247,7 @@
 
         </android.support.v7.widget.CardView>
 
-        <!--cast list-->
+        <!--cast card-->
         <android.support.v7.widget.CardView
             android:id="@+id/castCard"
             android:layout_width="0dp"
