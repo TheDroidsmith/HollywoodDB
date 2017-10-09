@@ -1,3 +1,5 @@
+![alt text](http://thedroidsmith.com/images/portfolio/hdb.png)
+
 ## Project Name
 HollywoodDB
 [Project Page](http://thedroidsmith.com/hollywood.html)
