@@ -9,6 +9,7 @@ import com.droidsmith.hollywooddb.data.remote.request.TMDBService;
 import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailActivity;
 import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailContract;
 import com.droidsmith.hollywooddb.ui.detail.movie.MovieDetailPresenterImpl;
+import com.droidsmith.hollywooddb.utility.rx.AppSchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
@@ -33,12 +34,18 @@ public class MovieDetailActivityModule {
     }
 
     @Provides
+    AppSchedulerProvider provideAppSchedulerProvider(){
+        return new AppSchedulerProvider();
+    }
+
+    @Provides
     MovieDetailContract.MovieDetailPresenter provideMovieDetailPresenter(
             MovieDetailContract.MovieDetailView movieDetailView,
             NetworkManager networkManager,
-            DiskManager diskManager){
+            DiskManager diskManager,
+            AppSchedulerProvider appSchedulerProvider){
 
-        return new MovieDetailPresenterImpl(movieDetailView,networkManager, diskManager);
+        return new MovieDetailPresenterImpl(movieDetailView, networkManager, diskManager, appSchedulerProvider);
     }
 
 }

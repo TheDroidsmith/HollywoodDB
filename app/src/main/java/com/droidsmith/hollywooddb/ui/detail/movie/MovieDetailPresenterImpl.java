@@ -8,6 +8,7 @@ import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.movies.MovieDetails;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
 import com.droidsmith.hollywooddb.ui.base.BasePresenter;
+import com.droidsmith.hollywooddb.utility.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
@@ -21,17 +22,22 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
     private MovieDetails details;
 
     @Inject
-    public NetworkManager networkManager;
+    NetworkManager networkManager;
 
     @Inject
     DiskManager diskManager;
 
     @Inject
-    public MovieDetailPresenterImpl(MovieDetailContract.MovieDetailView view,
-                                    NetworkManager networkManager, DiskManager diskManager) {
+    SchedulerProvider schedulerProvider;
+
+    public MovieDetailPresenterImpl(
+            MovieDetailContract.MovieDetailView view, NetworkManager networkManager,
+            DiskManager diskManager, SchedulerProvider schedulerProvider) {
+
         super(view);
         this.networkManager = networkManager;
         this.diskManager = diskManager;
+        this.schedulerProvider = schedulerProvider;
 
     }
 
@@ -40,8 +46,8 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
     public void fetchBasicInfo(Integer movieID) {
         addDisposable(
                 networkManager.apiMovieDetails(movieID)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
                         .subscribeWith(new DisposableSingleObserver<MovieDetails>() {
                             @Override
                             public void onSuccess(MovieDetails movieDetails) {
@@ -60,8 +66,8 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
     public void fetchCast(Integer movieID) {
         addDisposable(
                 networkManager.apiMovieCredits(movieID)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
                         .subscribeWith(new DisposableSingleObserver<CreditResponse>() {
                             @Override
                             public void onSuccess(CreditResponse creditResponse) {
