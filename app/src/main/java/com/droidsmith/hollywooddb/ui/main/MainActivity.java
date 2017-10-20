@@ -28,7 +28,7 @@ import dagger.android.support.HasSupportFragmentInjector;
 
 
 
-public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector, MainView {
+public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector, MainContract.MainView {
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     private MenuItem prevMenuItem;
 
     @Inject
-    MainPresenter presenter;
+    MainContract.MainPresenter presenter;
 
 
 

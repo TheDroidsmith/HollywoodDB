@@ -5,6 +5,7 @@ import com.droidsmith.hollywooddb.injection.component.FavoritesFragmentComponent
 import com.droidsmith.hollywooddb.injection.component.HomeFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.MoviesFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.TVFragmentComponent;
+import com.droidsmith.hollywooddb.ui.main.MainContract;
 import com.droidsmith.hollywooddb.ui.main.MainPresenter;
 import com.droidsmith.hollywooddb.ui.main.MainPresenterImp;
 import com.droidsmith.hollywooddb.ui.main.MainActivity;
@@ -22,12 +23,12 @@ import dagger.Provides;
 public class MainActivityModule {
 
     @Provides
-    MainView provideMainView(MainActivity mainActivity){
+    MainContract.MainView provideMainView(MainActivity mainActivity){
         return mainActivity;
     }
 
     @Provides
-    MainPresenter provideMainPresenter(MainView mainView){
+    MainContract.MainPresenter provideMainPresenter(MainContract.MainView mainView){
         return new MainPresenterImp(mainView);
     }
 

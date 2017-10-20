@@ -6,6 +6,7 @@
     android:layout_marginStart="8dp"
     android:orientation="vertical">
 
+    <!--movie poster-->
     <ImageView
         android:id="@+id/thumb_poster"
         android:layout_width="112.5dp"
@@ -17,7 +18,7 @@
         android:contentDescription="@string/content_desc_poster"
         android:transitionName="poster" />
 
-
+    <!--movie title-->
     <TextView
         android:id="@+id/thumb_title"
         android:layout_width="wrap_content"
@@ -26,6 +27,6 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:maxWidth="112.5dp"
-        android:textColor="#ffffff" />
+        android:textColor="@color/white" />
 
 </LinearLayout>

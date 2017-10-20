@@ -7,14 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="81dp">
 
+        <!--left guideline-->
         <android.support.constraint.Guideline
             android:id="@+id/leftGuideline"
             android:layout_width="wrap_content"
@@ -22,6 +21,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="16dp" />
 
+        <!--right guideline-->
         <android.support.constraint.Guideline
             android:id="@+id/rightGuideline"
             android:layout_width="wrap_content"
@@ -70,7 +70,8 @@
             android:transitionName="poster"
             app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/dateDetail" />
+            app:layout_constraintTop_toBottomOf="@+id/dateDetail"
+            android:contentDescription="@string/content_desc_poster"/>
 
         <!--detail card-->
         <android.support.v7.widget.CardView
@@ -301,8 +302,6 @@
 
 
         </android.support.v7.widget.CardView>
-
-
 
     </android.support.constraint.ConstraintLayout>
 
