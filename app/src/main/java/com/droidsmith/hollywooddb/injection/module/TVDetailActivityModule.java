@@ -7,6 +7,7 @@ import com.droidsmith.hollywooddb.data.remote.request.TMDBService;
 import com.droidsmith.hollywooddb.ui.detail.tv.TVDetailActivity;
 import com.droidsmith.hollywooddb.ui.detail.tv.TVDetailContract;
 import com.droidsmith.hollywooddb.ui.detail.tv.TVDetailPresenterImp;
+import com.droidsmith.hollywooddb.utility.rx.AppSchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,8 +26,18 @@ public class TVDetailActivityModule {
     }
 
     @Provides
-    TVDetailContract.TVDetailPresenter provideTVDetailPresenter(TVDetailContract.TVDetailView tvDetailView, NetworkManager networkManager){
-        return new TVDetailPresenterImp(tvDetailView,networkManager);
+    AppSchedulerProvider provideAppSchedulerProvider(){
+        return new AppSchedulerProvider();
+    }
+
+    @Provides
+    TVDetailContract.TVDetailPresenter provideTVDetailPresenter(
+            TVDetailContract.TVDetailView tvDetailView,
+            NetworkManager networkManager,
+            AppSchedulerProvider appSchedulerProvider){
+
+        return new TVDetailPresenterImp(tvDetailView, networkManager, appSchedulerProvider);
+
     }
 
 }

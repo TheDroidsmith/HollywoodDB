@@ -10,25 +10,28 @@ import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.PopularTVResponse
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShow;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TopTVResponse;
 import com.droidsmith.hollywooddb.ui.base.BasePresenter;
+import com.droidsmith.hollywooddb.utility.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements TVContract.TVPresenter {
-
-
-
 
     @Inject
     public NetworkManager networkManager;
 
     @Inject
-    public TVPresenterImp(TVContract.TVView view, NetworkManager networkManager) {
+    SchedulerProvider schedulerProvider;
+
+
+    public TVPresenterImp(TVContract.TVView view, NetworkManager networkManager, SchedulerProvider schedulerProvider) {
         super(view);
         this.networkManager = networkManager;
+        this.schedulerProvider = schedulerProvider;
     }
 
 
@@ -36,20 +39,17 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
     public void fetchAiringTodayList() {
         addDisposable(
                 networkManager.apiAiringTodayTV()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<AiringTodayResponse>() {
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeWith(new DisposableSingleObserver<AiringTodayResponse>() {
                             @Override
-                            public void onNext(AiringTodayResponse airingTodayResponse) {
+                            public void onSuccess(AiringTodayResponse airingTodayResponse) {
                                 view.updateAiringTodayList(airingTodayResponse.results);
                             }
+
                             @Override
                             public void onError(Throwable e) {
-                                //Log.d("Latest Movie OnError", "Error");
-                            }
-                            @Override
-                            public void onComplete() {
-                                //Log.d("Latest Movie Success", "Success!!!!");
+
                             }
                         }));
     }
@@ -58,20 +58,17 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
     public void fetchPopularTVList() {
         addDisposable(
                 networkManager.apiPopularTV()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<PopularTVResponse>() {
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeWith(new DisposableSingleObserver<PopularTVResponse>() {
                             @Override
-                            public void onNext(PopularTVResponse popularTVResponse) {
+                            public void onSuccess(PopularTVResponse popularTVResponse) {
                                 view.updatePopularTVList(popularTVResponse.results);
                             }
+
                             @Override
                             public void onError(Throwable e) {
-                                //Log.d("Popular TV OnError", "ERROR!!");
-                            }
-                            @Override
-                            public void onComplete() {
-                                //Log.d("Popular TV Success", "Success!!");
+
                             }
                         }));
     }
@@ -80,20 +77,17 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
     public void fetchOnTheAirList() {
         addDisposable(
                 networkManager.apiOnTheAirTV()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<OnTheAirResponse>() {
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeWith(new DisposableSingleObserver<OnTheAirResponse>() {
                             @Override
-                            public void onNext(OnTheAirResponse onTheAirResponse) {
+                            public void onSuccess(OnTheAirResponse onTheAirResponse) {
                                 view.updateOnTheAirList(onTheAirResponse.results);
                             }
+
                             @Override
                             public void onError(Throwable e) {
-                                //Log.d("On TV OnError", "ERROR!!");
-                            }
-                            @Override
-                            public void onComplete() {
-                                //Log.d("On TV Success", "Success!!");
+
                             }
                         }));
     }
@@ -102,23 +96,17 @@ public class TVPresenterImp extends BasePresenter<TVContract.TVView> implements 
     public void fetchTopRatedList() {
         addDisposable(
                 networkManager.apiTopTV()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<TopTVResponse>() {
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeWith(new DisposableSingleObserver<TopTVResponse>() {
                             @Override
-                            public void onNext(TopTVResponse topTVResponse) {
+                            public void onSuccess(TopTVResponse topTVResponse) {
                                 view.updateTopRatedList(topTVResponse.results);
-                                for (TVShow show: topTVResponse.results) {
-                                    Log.d("Top TV -->", "Show -- " + show.name);
-                                }
                             }
+
                             @Override
                             public void onError(Throwable e) {
-                                //Log.d("Top TV OnError", "ERROR!!");
-                            }
-                            @Override
-                            public void onComplete() {
-                                //Log.d("Top TV Success", "Success!!");
+
                             }
                         }));
     }

@@ -6,6 +6,7 @@ import com.droidsmith.hollywooddb.data.remote.request.TMDBService;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeContract;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.home.HomeFragmentPresenterImp;
+import com.droidsmith.hollywooddb.utility.rx.AppSchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,8 +26,16 @@ public class HomeFragmentModule {
     }
 
     @Provides
-    HomeContract.HomePresenter provideHomeFragmentPresenter(HomeContract.HomeView homeView, NetworkManager networkManager){
-        return new HomeFragmentPresenterImp(homeView,networkManager);
+    AppSchedulerProvider provideAppSchedulerProvider(){
+        return new AppSchedulerProvider();
+    }
+
+    @Provides
+    HomeContract.HomePresenter provideHomeFragmentPresenter(HomeContract.HomeView homeView,
+                                                            NetworkManager networkManager,
+                                                            AppSchedulerProvider appSchedulerProvider){
+
+        return new HomeFragmentPresenterImp(homeView, networkManager, appSchedulerProvider);
     }
 
 }

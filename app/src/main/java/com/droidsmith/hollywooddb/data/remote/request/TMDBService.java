@@ -28,19 +28,19 @@ public interface TMDBService {
 
     //movies
     @GET("movie/popular")
-    Observable<PopularMoviesResponse> getPopularMovies(@Query("api_key") String apiKey);
+    Single<PopularMoviesResponse> getPopularMovies(@Query("api_key") String apiKey);
 
     @GET("movie/latest")
-    Observable<LatestMoviesResponse> getLatestMovies(@Query("api_key") String apiKey);//TODO: remove this
+    Single<LatestMoviesResponse> getLatestMovies(@Query("api_key") String apiKey);//TODO: remove this
 
     @GET("movie/upcoming")
-    Observable<UpcomingMoviesResponse> getUpcomingMovies(@Query("api_key") String apiKey);
+    Single<UpcomingMoviesResponse> getUpcomingMovies(@Query("api_key") String apiKey);
 
     @GET("movie/top_rated")
-    Observable<TopMoviesResponse> getTopMovies(@Query("api_key") String apiKey);
+    Single<TopMoviesResponse> getTopMovies(@Query("api_key") String apiKey);
 
     @GET("movie/now_playing")
-    Observable<NowPlayingMoviesResponse> getNowPlayingMovies(@Query("api_key") String apiKey);
+    Single<NowPlayingMoviesResponse> getNowPlayingMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{id}")
     Single<MovieDetails> getMovieDetails(@Path("id") Integer movieID, @Query("api_key") String apiKey);
@@ -51,16 +51,16 @@ public interface TMDBService {
 
     //TV
     @GET("tv/popular")
-    Observable<PopularTVResponse> getPopularTV(@Query("api_key") String apiKey);
+    Single<PopularTVResponse> getPopularTV(@Query("api_key") String apiKey);
 
     @GET("tv/top_rated")
-    Observable<TopTVResponse> getTopTV(@Query("api_key") String apiKey);
+    Single<TopTVResponse> getTopTV(@Query("api_key") String apiKey);
 
     @GET("tv/airing_today")
-    Observable<AiringTodayResponse> getAiringTodayTV(@Query("api_key") String apiKey);
+    Single<AiringTodayResponse> getAiringTodayTV(@Query("api_key") String apiKey);
 
     @GET("tv/on_the_air")
-    Observable<OnTheAirResponse> getOnTheAirTV(@Query("api_key") String apiKey);
+    Single<OnTheAirResponse> getOnTheAirTV(@Query("api_key") String apiKey);
 
     @GET("tv/{id}")
     Single<TVShowDetails> getTVShowDetails(@Path("id") Integer tvID, @Query("api_key") String apiKey);

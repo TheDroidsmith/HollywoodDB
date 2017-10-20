@@ -7,6 +7,7 @@ import com.droidsmith.hollywooddb.data.manager.NetworkManager;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.people.CreditResponse;
 import com.droidsmith.hollywooddb.data.remote.response.tmdb.tv.TVShowDetails;
 import com.droidsmith.hollywooddb.ui.base.BasePresenter;
+import com.droidsmith.hollywooddb.utility.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
@@ -21,18 +22,22 @@ public class TVDetailPresenterImp extends BasePresenter<TVDetailContract.TVDetai
     @Inject
     public NetworkManager networkManager;
 
+    @Inject
+    SchedulerProvider schedulerProvider;
 
     public TVDetailPresenterImp(TVDetailContract.TVDetailView view,
-                                   NetworkManager networkManager) {
+                                NetworkManager networkManager,
+                                SchedulerProvider schedulerProvider) {
         super(view);
         this.networkManager = networkManager;
+        this.schedulerProvider = schedulerProvider;
     }
 
     @Override
     public void fetchBasicInfo(Integer tvID) {
         networkManager.apiTVShowDetails(tvID)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
                 .subscribeWith(new DisposableSingleObserver<TVShowDetails>() {
                     @Override
                     public void onSuccess(TVShowDetails tvDetails) {
@@ -51,8 +56,8 @@ public class TVDetailPresenterImp extends BasePresenter<TVDetailContract.TVDetai
 
         addDisposable(
                 networkManager.apiTVCredits(tvID)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
                         .subscribeWith(new DisposableSingleObserver<CreditResponse>() {
                             @Override
                             public void onSuccess(CreditResponse creditResponse) {

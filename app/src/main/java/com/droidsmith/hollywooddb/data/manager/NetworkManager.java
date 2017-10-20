@@ -21,15 +21,15 @@ import io.reactivex.disposables.Disposable;
 public interface NetworkManager {
 
     //movies
-    Observable<PopularMoviesResponse> apiPopularMovies();
+    Single<PopularMoviesResponse> apiPopularMovies();
 
-    Observable<LatestMoviesResponse> apiLatestMovies();//TODO: remove this
+    Single<LatestMoviesResponse> apiLatestMovies();//TODO: remove this
 
-    Observable<TopMoviesResponse> apiTopMovies();
+    Single<TopMoviesResponse> apiTopMovies();
 
-    Observable<UpcomingMoviesResponse> apiUpcomingMovies();
+    Single<UpcomingMoviesResponse> apiUpcomingMovies();
 
-    Observable<NowPlayingMoviesResponse> apiNowPlayingMovies();
+    Single<NowPlayingMoviesResponse> apiNowPlayingMovies();
 
     Single<MovieDetails> apiMovieDetails(Integer movieID);
 
@@ -37,13 +37,13 @@ public interface NetworkManager {
 
 
     //tv
-    Observable<TopTVResponse> apiTopTV();
+    Single<TopTVResponse> apiTopTV();
 
-    Observable<PopularTVResponse> apiPopularTV();
+    Single<PopularTVResponse> apiPopularTV();
 
-    Observable<AiringTodayResponse> apiAiringTodayTV();
+    Single<AiringTodayResponse> apiAiringTodayTV();
 
-    Observable<OnTheAirResponse> apiOnTheAirTV();
+    Single<OnTheAirResponse> apiOnTheAirTV();
 
     Single<TVShowDetails> apiTVShowDetails(Integer tvID);
 

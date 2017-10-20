@@ -6,6 +6,7 @@ import com.droidsmith.hollywooddb.data.remote.request.TMDBService;
 import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesContract;
 import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesFragment;
 import com.droidsmith.hollywooddb.ui.main.fragments.movies.MoviesPresenterImp;
+import com.droidsmith.hollywooddb.utility.rx.AppSchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,9 +26,16 @@ public class MoviesFragmentModule {
     }
 
     @Provides
+    AppSchedulerProvider provideAppSchedulerProvider(){
+        return new AppSchedulerProvider();
+    }
+
+    @Provides
     MoviesContract.MoviesPresenter provideMoviesFragmentPresenter(MoviesContract.MoviesView moviesView,
-                                                                  NetworkManager networkManager){
-        return new MoviesPresenterImp(moviesView,networkManager);
+                                                                  NetworkManager networkManager,
+                                                                  AppSchedulerProvider appSchedulerProvider){
+
+        return new MoviesPresenterImp(moviesView, networkManager, appSchedulerProvider);
     }
 
 }

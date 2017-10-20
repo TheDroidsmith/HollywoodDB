@@ -33,28 +33,28 @@ public class NetworkManagerImp implements NetworkManager{
 
     //movies
     @Override
-    public Observable<PopularMoviesResponse> apiPopularMovies(){
+    public Single<PopularMoviesResponse> apiPopularMovies(){
         return tmdbService.getPopularMovies(API_KEY);
     }
 
     @Override
-    public Observable<LatestMoviesResponse> apiLatestMovies(){
+    public Single<LatestMoviesResponse> apiLatestMovies(){
         //TODO: remove this
         return tmdbService.getLatestMovies(API_KEY);
     }
 
     @Override
-    public Observable<TopMoviesResponse> apiTopMovies() {
+    public Single<TopMoviesResponse> apiTopMovies() {
         return tmdbService.getTopMovies(API_KEY);
     }
 
     @Override
-    public Observable<UpcomingMoviesResponse> apiUpcomingMovies() {
+    public Single<UpcomingMoviesResponse> apiUpcomingMovies() {
         return tmdbService.getUpcomingMovies(API_KEY);
     }
 
     @Override
-    public Observable<NowPlayingMoviesResponse> apiNowPlayingMovies() {
+    public Single<NowPlayingMoviesResponse> apiNowPlayingMovies() {
         return tmdbService.getNowPlayingMovies(API_KEY);
     }
 
@@ -71,22 +71,22 @@ public class NetworkManagerImp implements NetworkManager{
 
     //tv
     @Override
-    public Observable<TopTVResponse> apiTopTV() {
+    public Single<TopTVResponse> apiTopTV() {
         return tmdbService.getTopTV(API_KEY);
     }
 
     @Override
-    public Observable<PopularTVResponse> apiPopularTV(){
+    public Single<PopularTVResponse> apiPopularTV(){
         return tmdbService.getPopularTV(API_KEY);
     }
 
     @Override
-    public Observable<AiringTodayResponse> apiAiringTodayTV() {
+    public Single<AiringTodayResponse> apiAiringTodayTV() {
         return tmdbService.getAiringTodayTV(API_KEY);
     }
 
     @Override
-    public Observable<OnTheAirResponse> apiOnTheAirTV() {
+    public Single<OnTheAirResponse> apiOnTheAirTV() {
         return tmdbService.getOnTheAirTV(API_KEY);
 
     }
