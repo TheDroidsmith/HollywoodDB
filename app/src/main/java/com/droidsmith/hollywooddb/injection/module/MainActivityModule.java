@@ -6,11 +6,8 @@ import com.droidsmith.hollywooddb.injection.component.HomeFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.MoviesFragmentComponent;
 import com.droidsmith.hollywooddb.injection.component.TVFragmentComponent;
 import com.droidsmith.hollywooddb.ui.main.MainContract;
-import com.droidsmith.hollywooddb.ui.main.MainPresenter;
 import com.droidsmith.hollywooddb.ui.main.MainPresenterImp;
 import com.droidsmith.hollywooddb.ui.main.MainActivity;
-import com.droidsmith.hollywooddb.ui.main.MainView;
-import com.droidsmith.hollywooddb.ui.main.fragments.favorites.FavoritesFragment;
 
 import dagger.Module;
 import dagger.Provides;

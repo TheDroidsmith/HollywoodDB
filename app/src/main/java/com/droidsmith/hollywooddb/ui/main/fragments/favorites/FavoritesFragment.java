@@ -76,14 +76,6 @@ public class FavoritesFragment extends Fragment implements FavoritesContract.Fav
 
 
 
-
-
-
-
-
-
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

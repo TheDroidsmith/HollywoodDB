@@ -39,8 +39,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
     }
 
-
-
     public MovieListAdapter(Context context) {
         this.movieList = new ArrayList<>();
         this.context = context;
