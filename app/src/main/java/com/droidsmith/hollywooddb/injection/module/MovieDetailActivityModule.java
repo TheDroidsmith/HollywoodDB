@@ -13,7 +13,6 @@ import com.droidsmith.hollywooddb.utility.rx.AppSchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
-import io.realm.Realm;
 
 @Module
 public class MovieDetailActivityModule {
@@ -29,8 +28,8 @@ public class MovieDetailActivityModule {
     }
 
     @Provides
-    DiskManager provideDiskManager(Realm realm){
-        return new DiskManagerImp(realm);
+    DiskManager provideDiskManager(){
+        return new DiskManagerImp();
     }
 
     @Provides

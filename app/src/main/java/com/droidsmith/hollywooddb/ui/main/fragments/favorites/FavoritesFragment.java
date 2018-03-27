@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.droidsmith.hollywooddb.R;
-import com.droidsmith.hollywooddb.data.model.Favorite;
-import com.droidsmith.hollywooddb.ui.adapters.FavoritesAdapter;
+import com.droidsmith.hollywooddb.data.local.Favorite;
 
 import javax.inject.Inject;
 
@@ -18,15 +17,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
-import io.realm.OrderedRealmCollection;
-import io.realm.RealmResults;
 
 
 public class FavoritesFragment extends Fragment implements FavoritesContract.FavoritesView{
 
     Unbinder unbinder;
 
-    FavoritesAdapter favAdapter;
+
 
     @BindView(R.id.favListView)
     ListView favListView;
@@ -61,16 +58,7 @@ public class FavoritesFragment extends Fragment implements FavoritesContract.Fav
     }
 
     @Override
-    public void updateFavorites(RealmResults<Favorite> results) {
-
-        if(favAdapter == null){
-            favAdapter = new FavoritesAdapter(getActivity(), results);
-            favListView.setAdapter(favAdapter);
-        } else{
-           favAdapter.updateData(results);
-        }
-
-
+    public void updateFavorites() {
 
     }
 

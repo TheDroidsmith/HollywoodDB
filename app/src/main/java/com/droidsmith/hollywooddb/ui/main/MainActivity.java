@@ -72,39 +72,64 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     }
 
 
-    ////////////////
-    //MainView methods
-    ////////////////
-
     @Override
     public void setupBottomNavigationView(){
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.bottom_action_home:
-                                mainViewpager.setCurrentItem(0);
-                                return true;
-                            case R.id.bottom_action_movies:
-                                mainViewpager.setCurrentItem(1);
-                                return true;
-                            case R.id.bottom_action_tv:
-                                mainViewpager.setCurrentItem(2);
-                                return true;
-                            case R.id.bottom_action_favorites:
-                                mainViewpager.setCurrentItem(3);
-                                return true;
-                            case R.id.bottom_action_history:
-                                mainViewpager.setCurrentItem(4);
-                                return true;
-                        }
-                        return false;
-                    }
-                });
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            {
+                switch (item.getItemId()) {
+                    case R.id.bottom_action_home:
+                        mainViewpager.setCurrentItem(0);
+                        return true;
+                    case R.id.bottom_action_movies:
+                        mainViewpager.setCurrentItem(1);
+                        return true;
+                    case R.id.bottom_action_tv:
+                        mainViewpager.setCurrentItem(2);
+                        return true;
+                    case R.id.bottom_action_favorites:
+                        mainViewpager.setCurrentItem(3);
+                        return true;
+                    case R.id.bottom_action_history:
+                        mainViewpager.setCurrentItem(4);
+                        return true;
+                }
+                return false;
+            }
+        });
 
     }
+
+
+//    @Override
+//    public void setupBottomNavigationView(){
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(
+//                new BottomNavigationView.OnNavigationItemSelectedListener() {
+//                    @Override
+//                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                        switch (item.getItemId()) {
+//                            case R.id.bottom_action_home:
+//                                mainViewpager.setCurrentItem(0);
+//                                return true;
+//                            case R.id.bottom_action_movies:
+//                                mainViewpager.setCurrentItem(1);
+//                                return true;
+//                            case R.id.bottom_action_tv:
+//                                mainViewpager.setCurrentItem(2);
+//                                return true;
+//                            case R.id.bottom_action_favorites:
+//                                mainViewpager.setCurrentItem(3);
+//                                return true;
+//                            case R.id.bottom_action_history:
+//                                mainViewpager.setCurrentItem(4);
+//                                return true;
+//                        }
+//                        return false;
+//                    }
+//                });
+//
+//    }
 
     @Override
     public void setupViewPager(){
@@ -136,9 +161,6 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     }
 
 
-    ////////////////
-    //Toolbar menu
-    ////////////////
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);

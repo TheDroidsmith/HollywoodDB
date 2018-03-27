@@ -84,7 +84,6 @@ public class MovieDetailPresenterImpl extends BasePresenter<MovieDetailContract.
 
     @Override
     public void saveToFavorites() {
-        diskManager.saveToRealm(details);
         view.onSuccessfulSave();
     }
 

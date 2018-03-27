@@ -9,7 +9,6 @@ import com.droidsmith.hollywooddb.ui.main.fragments.favorites.FavoritesPresenter
 
 import dagger.Module;
 import dagger.Provides;
-import io.realm.Realm;
 
 @Module
 public class FavoritesFragmentModule {
@@ -20,8 +19,8 @@ public class FavoritesFragmentModule {
     }
 
     @Provides
-    DiskManager provideDiskManager(Realm realm){
-        return new DiskManagerImp(realm);
+    DiskManager provideDiskManager(){
+        return new DiskManagerImp();
     }
 
     @Provides

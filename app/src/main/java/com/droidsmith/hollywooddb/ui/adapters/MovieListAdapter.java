@@ -94,16 +94,13 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
             context.startActivity(intent, options.toBundle());
         }
 
-
         @BindView(R.id.thumb_title)
         TextView title;
-
 
         private ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }
-
 
         public TextView getTitle() {
             return title;
@@ -112,7 +109,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         public ImageView getPoster() {
             return poster;
         }
-
 
     }
 
